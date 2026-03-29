@@ -1,1 +1,23 @@
-<p>header works!</p>
+<nav class=" navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/home']"> Fresh Market 🥦</a>
+
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+
+                <li class="nav-item me-3">
+                    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"> Inicio</a>
+                </li>
+
+                <li class="nav-item me-3">
+                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="active">Carrito 🛒 </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/product-form']" routerLinkActive="active">Nuevo producto ➕ </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
