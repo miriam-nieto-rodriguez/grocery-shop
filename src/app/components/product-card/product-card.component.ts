@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { IProduct } from '../../interfaces/iproduct.interface';
-import { ProductsService } from '../../services/products.service';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -11,10 +11,10 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductCardComponent {
   myProduct = input<IProduct>()
-  productsServices = inject(ProductsService)
+  cartService = inject(CartService)
 
-  addProduct() {
-    this.productsServices.addProduct(this.myProduct()!);
+  addToCart() {
+    this.cartService.addToCart(this.myProduct()!);
   }
 
 }

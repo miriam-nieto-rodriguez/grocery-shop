@@ -9,8 +9,12 @@
                     <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"> Inicio</a>
                 </li>
 
-                <li class="nav-item me-3">
+                <li class="nav-item me-3 position-relative">
                     <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="active">Carrito 🛒 </a>
+                    <span class="badge rounded-pill bg-success badge-cart">
+                        {{cartService.getCart().length}}
+                    </span>
+                    <span class="visually-hidden">productos en el carrito</span>
                 </li>
 
                 <li class="nav-item">
