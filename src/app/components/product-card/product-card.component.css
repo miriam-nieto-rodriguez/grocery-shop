@@ -1,0 +1,32 @@
+.product-card{
+    background-color: #ECF1DE;
+    border: 1px solid #c3e6cb;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+.product-img {
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.btn-carrito {
+    background-color: #7CA94E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    transition: background-color 0.3s ease;
+   
+}
+
+.btn-carrito:hover {
+    background-color: #679438;
+    transform: scale(1.05);
+}

@@ -7,4 +7,5 @@
 
 .active:hover {
  background-color: #679438;
+ transform: scale(1.05);
 }
