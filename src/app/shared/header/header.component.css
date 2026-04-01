@@ -9,3 +9,16 @@
  background-color: #679438;
  transform: scale(1.05);
 }
+
+.badge-cart {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    font-size: 12px;
+    min-width: 20px;
+    padding: 0px 6px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
