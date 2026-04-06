@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../services/cart.service';
-import { IProduct } from '../../interfaces/iproduct.interface';
-import { PRODUCTS } from '../../products.db';
+
+
 
 @Component({
   selector: 'app-header',

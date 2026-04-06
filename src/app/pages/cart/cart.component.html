@@ -15,24 +15,19 @@
             <div class="card cart-item p-3 mb-3">
 
                 <div class="d-flex align-items-center">
-
-                    <!-- Imagen -->
+                   
                     <img [src]="item.product.imageUrl" [alt]="item.product.name" class="cart-img me-3">
 
-                    <!-- Info -->
                     <div class="flex-grow-1">
 
-                        <!-- Nombre -->
                         <h6 class="mb-1 fw-semibold">{{ item.product.name }}</h6>
 
-                        <!-- Precio -->
                         <small class="text-muted">
                             {{ item.product.price | currency:'EUR' }}
                         </small>
 
                     </div>
 
-                    <!-- Cantidad -->
                     <div class="quantity-controls d-flex align-items-center me-4">
                         <button class="btn btn-outline-success btn-sm"
                             (click)="cartServices.addToCart(item.product)">+</button>
@@ -45,7 +40,6 @@
                             (click)="cartServices.decreaseQuantity(item.product)">-</button>
                     </div>
 
-                    <!-- Total producto -->
                     <div class="text-end">
                         <strong>
                             {{ (item.product.price * item.quantity) | currency:'EUR' }}
