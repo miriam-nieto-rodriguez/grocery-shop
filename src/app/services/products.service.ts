@@ -11,8 +11,7 @@ export class ProductsService {
   private apiUrl= 'http://localhost:3000/products';
 
   getAll(): Promise<IProduct[]> {
-    return lastValueFrom(this.httpClient.get<IProduct[]>(this.apiUrl));
-
+    return lastValueFrom(this.httpClient.get<IProduct[]>(`${this.apiUrl}`));
   }
   getById(id: string | undefined): Promise<IProduct>  {
     return lastValueFrom(this.httpClient.get<IProduct>(`${this.apiUrl}/${id}`));
