@@ -1,16 +1,20 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { IProduct, IProductItem } from '../interfaces/iproduct.interface';
-import { PRODUCTS } from '../products.db';
+import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart = signal<IProduct[]>(PRODUCTS);
+  private httpClient = inject(HttpClient)
+  private apiUrl = 'http://localhost:3000/products'
+
   carrito = signal<IProductItem[]>([]);
 
-  getCart() {
-    return this.cart();
+
+  getProducts(): Promise<IProduct[]> {
+    return lastValueFrom(this.httpClient.get<IProduct[]>(this.apiUrl))
   }
 
   addToCart(product: IProduct) {

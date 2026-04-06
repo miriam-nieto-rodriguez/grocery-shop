@@ -1,19 +1,26 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct.interface';
-import { PRODUCTS } from '../products.db';
+import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private products: IProduct[] = PRODUCTS;
+  private httpClient = inject(HttpClient)
+  private apiUrl= 'http://localhost:3000/products';
 
-  getAll(): IProduct[] {
-    return this.products;
+  getAll(): Promise<IProduct[]> {
+    return lastValueFrom(this.httpClient.get<IProduct[]>(this.apiUrl));
+
+  }
+  getById(id: string | undefined): Promise<IProduct>  {
+    return lastValueFrom(this.httpClient.get<IProduct>(`${this.apiUrl}/${id}`));
   }
 
   addProduct(product: IProduct) {
-    this.products.push(product);
+    return lastValueFrom(this.httpClient.post<IProduct>(this.apiUrl, product));
   }
+
 }
 
