@@ -1,1 +1,34 @@
-<p>product-detail works!</p>
+<div class="container mt-5">
+    @if (product()) {
+    <article class="row">
+        <div class="col-md-6">
+            <figure class="product-img">
+                <img [src]="product()!.imageUrl" [alt]="product()!.name">
+            </figure>
+        </div>
+        <div class="col-md-6 product-details">
+            <h1>{{ product()!.name }}</h1>
+            <p class="lead">{{ product()!.price | currency:'EUR' }}</p>
+            <p>{{ product()!.description }}</p>
+            <div class="quantity-controls d-flex align-items-center me-4">
+                <button class="btn btn-outline-danger btn-sm" (click)="cambiarCantidad(-1)">-</button>
+
+                <span class="quantity-display mx-2">
+                    {{ cantidad() }}
+                </span>
+
+                <button class="btn btn-outline-success btn-sm" (click)="cambiarCantidad(1)">+</button>
+
+            </div>
+            <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-2 flex-wrap">
+                <button class="btn btn-success" (click)="agregarAlCarrito()">
+                    Añadir al carrito
+                </button>
+                <button class="btn btn-secondary" [routerLink]="['/home']">Volver al listado</button>
+            </div>
+
+        </div>
+
+    </article>
+    }
+</div>
