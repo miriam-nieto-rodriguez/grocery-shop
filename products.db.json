@@ -89,12 +89,12 @@
       "description": "El aguacate es una fruta cremosa y rica en grasas saludables, perfecta para ensaladas o como snack."
     },
     {
-      "id": "14",
       "name": "Calabacines",
       "price": 3.49,
+      "description": "Los calabacines son una verdura versátil, baja en calorías y rica en agua.",
       "category": "Verduras",
       "imageUrl": "https://s1.abcstatics.com/media/bienestar/2020/09/09/calabacin-k9TD--1248x698@abc.jpg",
-      "description": "Los calabacines son una verdura versátil, baja en calorías y rica en agua."
+      "id": "14"
     },
     {
       "id": "15",
@@ -115,7 +115,7 @@
     {
       "name": "Manzanas",
       "price": 3.45,
-      "description": "Las manzanas rojas perfectas en cualquier momento",
+      "description": "Las manzanas rojas son una fruta crujiente y dulce, ricas en fibra y vitaminas, perfectas para comer fresca o en postres.",
       "category": "Fruta",
       "imageUrl": "https://lomejordelafruta.com/1160-product_zoom/manzanas-ambrosia.jpg",
       "id": "7fgbT7Zw7U8"
@@ -123,7 +123,7 @@
     {
       "name": "Peras",
       "price": 2.45,
-      "description": "Las peras dulces y perfectas para comer en cualquier momento",
+      "description": "Las peras son una fruta jugosa y dulce, ricas en vitaminas y minerales, ideales para una dieta saludable.",
       "category": "Fruta",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQst8BwJEwwomqM1NZBhLeCdIKzffKdPyskkQ&s",
       "id": "jt5-gRfTKL4"
