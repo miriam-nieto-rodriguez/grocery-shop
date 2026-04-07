@@ -21,5 +21,9 @@ export class ProductsService {
     return lastValueFrom(this.httpClient.post<IProduct>(this.apiUrl, product));
   }
 
+  deleteProduct(id: string | number) {
+    return lastValueFrom(this.httpClient.delete(`${this.apiUrl}/${id}`));
+  }
+
 }
 

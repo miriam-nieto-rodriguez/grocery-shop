@@ -1,1 +1,60 @@
-<p>product-form works!</p>
+<section class="container my-5">
+    <h3>Añadir Producto</h3>
+    <form class="shadow p-4 rounded-4 bg-white" [formGroup]="productForm" (ngSubmit)='getDataForm()'>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName='name'>
+
+            @if(checkControl ('name', 'required')){
+            <div class="text-danger mt-2">
+                Campo obligatorio
+            </div>
+            }
+
+            @if(checkControl ('name', 'minlength')){
+            <div class="text-danger mt-2">
+                El nombre debe tener al menos 3 caracteres
+            </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="precio" formControlName='price'>
+            @if(checkControl ('price', 'required')){
+            <p class="text-danger mt-2">Campo obligatorio</p>
+            }
+            @if(checkControl ('price', 'min')){
+            <p class="text-danger mt-2">El precio debe ser un valor positivo</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" formControlName='description'></textarea>
+
+            @if(checkControl ('description', 'required')){
+            <p class="text-danger mt-2">Campo obligatorio</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoría</label>
+            <input type="text" class="form-control" id="categoria" formControlName='category'>
+
+            @if(checkControl ('category', 'required')){
+            <p class="text-danger mt-2">Campo obligatorio</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="imagen" class="form-label">URL de la Imagen</label>
+            <input type="url" class="form-control" id="imagen" formControlName='imageUrl'>
+            @if(checkControl ('imageUrl', 'required')){
+            <p class="text-danger mt-2">Campo obligatorio</p>
+            }
+            @if(checkControl ('imageUrl', 'pattern')){
+            <p class="text-danger mt-2">Debe ser una URL válida</p>
+            }
+        </div>
+
+        <input type="submit" value="Guardar Producto" class="btn btn-success" [disabled]="productForm.invalid">
+    </form>
+</section>
