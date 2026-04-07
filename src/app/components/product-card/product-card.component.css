@@ -1,13 +1,25 @@
 .product-card{
     background-color: #ECF1DE;
     border: 1px solid #c3e6cb;
-    border-radius: 10px;
+    border-radius: 15px;
     transition: transform 0.3s ease;
+    overflow: hidden;
+    padding: 15px;
     
 }
 
 .product-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(124, 169, 78, 0.15);
+}
+
+.card-img-top{
+    border-radius: 10px;
+    transition: transform 0.5s ease
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.05); 
 }
 
 .product-img {
@@ -20,8 +32,9 @@
     background-color: #7CA94E;
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 6px 12px;
+    border-radius: 25px;
+    font-weight: 600;
+    padding: 8px 20px;
     transition: background-color 0.3s ease;
    
 }
@@ -29,4 +42,19 @@
 .btn-carrito:hover {
     background-color: #679438;
     transform: scale(1.05);
+}
+
+.btn-outline-danger {
+    border-radius: 25px;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    background: transparent;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-outline-danger:hover {
+    background-color: #ff6b6b;
+    color: white;
+    border-color: #ff6b6b;
 }
