@@ -39,4 +39,9 @@ export class CartService {
     }
 
   }
+
+    limpiarCarrito() {
+    this.carrito.set([])
+    localStorage.removeItem('cart')
+  }
 }

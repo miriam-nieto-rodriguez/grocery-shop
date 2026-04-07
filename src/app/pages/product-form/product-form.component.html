@@ -1,5 +1,5 @@
 <section class="container my-5">
-    <h3>Añadir Producto</h3>
+    <h3>{{title}} producto</h3>
     <form class="shadow p-4 rounded-4 bg-white" [formGroup]="productForm" (ngSubmit)='getDataForm()'>
 
         <div class="mb-3">
@@ -55,6 +55,6 @@
             }
         </div>
 
-        <input type="submit" value="Guardar Producto" class="btn btn-success" [disabled]="productForm.invalid">
+        <input type="submit" [value]="title" class="btn btn-success" [disabled]="productForm.invalid">
     </form>
 </section>

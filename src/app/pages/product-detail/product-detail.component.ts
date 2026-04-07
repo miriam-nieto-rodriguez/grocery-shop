@@ -18,6 +18,7 @@ export class ProductDetailComponent {
   product = signal<IProduct | null>(null)
   productsServices = inject(ProductsService)
   cantidad = signal<number>(1)
+ 
 
   ngOnInit () {
     this.cargarContenido()

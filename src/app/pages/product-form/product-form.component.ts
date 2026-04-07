@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import { toast } from 'ngx-sonner';
 import { Router } from '@angular/router';
+import { IProduct } from '../../interfaces/iproduct.interface';
 
 @Component({
   selector: 'app-product-form',
@@ -14,25 +15,28 @@ export class ProductFormComponent {
   productForm: FormGroup;
   productsService = inject(ProductsService)
   router = inject(Router)
+  id = input<string>()
+  title: string = 'Agregar'
+  product = signal<IProduct | undefined>(undefined)
 
 
-  constructor(){
+  constructor() {
     this.productForm = new FormGroup({
-      name: new FormControl('',[
+      name: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ]),
-      price: new FormControl('',[
+      price: new FormControl('', [
         Validators.required,
-        Validators.min(0.01)    
+        Validators.min(0.01)
       ]),
-      description: new FormControl('',[
-        Validators.required,
-      ]),
-      category: new FormControl('',[
+      description: new FormControl('', [
         Validators.required,
       ]),
-      imageUrl: new FormControl('',[
+      category: new FormControl('', [
+        Validators.required,
+      ]),
+      imageUrl: new FormControl('', [
         Validators.required,
         Validators.pattern(/^https?:\/\//)
       ])
@@ -40,29 +44,56 @@ export class ProductFormComponent {
     }, [])
   }
 
-  checkControl(controlName: string, errorName: string): boolean  {
-    return !!( this.productForm.get(controlName)?.hasError(errorName) && this.productForm.get(controlName)?.touched);
+  checkControl(controlName: string, errorName: string): boolean {
+    return !!(this.productForm.get(controlName)?.hasError(errorName) && this.productForm.get(controlName)?.touched);
   }
 
-  async getDataForm(){
-    if (this.productForm.valid) {
-      const nuevoProducto = this.productForm.value;
+  async ngOnInit() {
+    if (this.id()) {
+      this.title = "Actualizar"
+      this.product.set(await this.productsService.getById(this.id()))
 
-      console.log ('Producto creado:', nuevoProducto);
+      this.productForm.patchValue({
+        id: this.product()?.id,
+        name: this.product()?.name,
+        price: this.product()?.price,
+        description: this.product()?.description,
+        category: this.product()?.category,
+        imageUrl: this.product()?.imageUrl
+      })
 
-      try{
-        const response = await this.productsService.addProduct(nuevoProducto);
+    }
+  }
 
-        if(response) {
+  async getDataForm() {
+    if (this.id()) {
+      try {
+        console.log(this.productForm.value)
+        const response = await this.productsService.updateProduct(this.productForm.value, this.id());
+
+        if (response.id) {
+          toast.success(`Producto ${response.name} editado exitosamente `);
+          this.router.navigate(['/home'])
+        }
+      } catch (error) {
+        toast.error('Error al actualizar el producto');
+      }
+    } else {
+      try {
+        let response = await this.productsService.addProduct(this.productForm.value)
+        if (response) {
           toast.success('Producto agregado exitosamente');
           this.productForm.reset();
           this.router.navigate(['/home'])
         }
-      }catch(error){
-        toast.error('Error al agregar el producto');
+      } catch(error) {
+        toast.error ("Error al agregar el producto")
       }
     }
 
   }
 
 }
+
+
+

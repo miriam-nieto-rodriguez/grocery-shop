@@ -9,6 +9,7 @@ export const routes: Routes = [
     {path: "home", component: HomeComponent},
     {path: "product-detail/:id", component: ProductDetailComponent},
     {path: "product-form", component: ProductFormComponent},
+    {path: "updateProduct/:id", component: ProductFormComponent},
     {path: "cart", component: CartComponent},
     {path: "**", redirectTo: "home"}
 ];
