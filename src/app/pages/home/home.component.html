@@ -9,9 +9,9 @@
     </section>
 
     <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-5" >
-        <button class="btn-paginacion" (click)="currentPage.set(currentPage() - 1)" [disabled]="currentPage() === 1">Anterior</button>
-        <span>Página {{currentPage()}} de {{totalPages()}}</span>
-        <button class="btn-paginacion" (click)="currentPage.set(currentPage() + 1)" [disabled]="currentPage() >= totalPages()">Siguiente</button>
+        <button class="btn-paginacion" (click)="currentPage.set(currentPage() - 1)" [disabled]="currentPage() === 1">← Anterior</button>
+        <span class="paginacion-info shadow-sm">Página {{currentPage()}} de {{totalPages()}}</span>
+        <button class="btn-paginacion" (click)="currentPage.set(currentPage() + 1)" [disabled]="currentPage() >= totalPages()">Siguiente →</button>
     </div>
 
 </div>

@@ -8,26 +8,26 @@
         </div>
         <div class="col-md-6 product-details">
             <h1>{{ product()!.name }}</h1>
-            <p class="text-success">{{ product()!.category }}</p>
-            <p class="lead">{{ product()!.price | currency:'EUR' }}</p>
+            <p class="category">{{ product()!.category }}</p>
+            <p class="price">{{ product()!.price | currency:'EUR' }}</p>
             <p>{{ product()!.description }}</p>
             <div class="quantity-controls d-flex align-items-center me-4">
-                <button class="btn btn-outline-danger btn-sm" (click)="cambiarCantidad(-1)">-</button>
+                <button class="btn-menos" (click)="cambiarCantidad(-1)">-</button>
 
-                <span class="quantity-display mx-2">
+                <span class="quantity">
                     {{ cantidad() }}
                 </span>
 
-                <button class="btn btn-outline-success btn-sm" (click)="cambiarCantidad(1)">+</button>
+                <button class="btn-mas" (click)="cambiarCantidad(1)">+</button>
 
             </div>
             <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-2 flex-wrap">
-                <button class="btn btn-success" (click)="agregarAlCarrito()">
+                <button class="btn-carrito" (click)="agregarAlCarrito()">
                     Añadir al carrito
                 </button>
-                <button class="btn btn-outline-warning" [routerLink]="['/updateProduct', product()?.id]">Editar
+                <button class="btn-editar" [routerLink]="['/updateProduct', product()?.id]">Editar
                     producto</button>
-                <button class="btn btn-secondary" [routerLink]="['/home']">Volver al listado</button>
+                <button class="btn-volver" [routerLink]="['/home']">Volver al listado</button>
             </div>
 
         </div>
