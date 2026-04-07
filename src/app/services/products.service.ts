@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
@@ -24,6 +24,12 @@ export class ProductsService {
   deleteProduct(id: string | number) {
     return lastValueFrom(this.httpClient.delete(`${this.apiUrl}/${id}`));
   }
+
+  updateProduct(product: IProduct, id: string | undefined) {
+    return lastValueFrom(this.httpClient.put<IProduct>(`${this.apiUrl}/${id}`, product))
+  }
+
+
 
 }
 
