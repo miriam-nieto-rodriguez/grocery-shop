@@ -10,9 +10,14 @@
         <p class="card-text">{{ myProduct()?.price?.toFixed(2) }} €</p>
     </div>
 
-    <div class="d-flex justify-content-center mt-2 mb-3">
+    <div class="d-flex justify-content-center mt-2 mb-3 gap-2">
         <button class="btn btn-carrito" (click)="cartService.addToCart(myProduct()!)">
-            Añadir 
+            Añadir
+        </button>
+        <button class="btn btn-outline-danger"  (click)="deleteProduct(myProduct()?.id!)">
+            Borrar 
         </button>
     </div>
+
+
 </article>

@@ -1,22 +1,141 @@
 {
- 
-    "products": [
-    {"id": 1, "name": "Manzanas", "price": 1.99, "category": "Frutas", "imageUrl": "https://www.bupasalud.com/sites/default/files/inline-images/fuji-red.jpg", "description": "Las manzanas son una fruta deliciosa y crujiente, perfectas para comer solas o en postres. Son ricas en fibra y antioxidantes, lo que las convierte en una opción saludable para cualquier dieta."},
-    {"id": 2, "name": "Plátanos", "price": 3.99, "category": "Frutas", "imageUrl": "https://i.blogs.es/81b63d/platanos/500_333.jpeg", "description": "Los plátanos son una fruta tropical rica en potasio y vitaminas, ideales para una dieta equilibrada."},
-    {"id": 3, "name": " Pimientos rojos", "price": 2.99, "category": "Verduras","imageUrl": "https://www.supermercadoseljamon.com/documents/10180/892067/54001162_G.jpg", "description": "Los pimientos rojos son una verdura crujiente y llena de vitaminas, perfecta para ensaladas o guisos."}, 
-    {"id": 4, "name": "Berenjenas", "price": 3.99, "category": "Verduras", "imageUrl": "https://cdn-prod.medicalnewstoday.com/content/images/articles/279/279359/two-eggplants-on-a-wooden-table.jpg", "description": "Las berenjenas son una verdura versátil que se puede cocinar de muchas maneras, desde gratinadas hasta estofadas."},
-    {"id":5, "name": "Fresas", "price": 5.99, "category": "Frutas", "imageUrl": "https://petitfitbycris.com/wp-content/uploads/2020/05/fresa.jpg", "description": "Las fresas son una fruta dulce y jugosa, ricas en vitamina C y antioxidantes."},
-    {"id":6, "name": "Tomates", "price": 4.99, "category": "Verduras", "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDDEwt9epgsbNR_1iE6MWyzo9wBhv1J1gwxw&s", "description": "Los tomates son una verdura muy utilizada en la cocina mediterránea, rica en licopeno y vitaminas."},
-    {"id":7, "name": "Brocoli", "price": 2.99, "category": "Verduras", "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyM5TCt5M0UyGs7MiRPtQg-a5aCgqazIwYg&s", "description": "El brócoli es una verdura crucífera rica en nutrientes, ideal para una dieta saludable."},
-    {"id":8, "name": "Naranjas", "price": 2.99, "category": "Frutas", "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsSJp3vHvZ3GV6jmAnFm8D8AOwahCO6qq3g&s", "description": "Las naranjas son una fruta cítrica rica en vitamina C, perfecta para una dieta equilibrada."}
-    , {"id":9, "name": "Peras", "price": 2.49, "category": "Frutas", "imageUrl": "https://content.cuerpomente.com/medio/2024/05/28/pera_8ea4bd9a_240528181735_1200x630.jpg", "description": "Las peras son una fruta jugosa y dulce, rica en fibra y vitaminas."},
-    {"id":10, "name": "Zanahorias", "price": 1.49, "category": "Verduras", "imageUrl": "https://img2.rtve.es/n/2452903?w=1600", "description": "Las zanahorias son una verdura crujiente rica en vitamina A, perfecta para ensaladas o cocidas."},
-    {"id":11, "name": "Uvas", "price": 4.99, "category": "Frutas", "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ebpme418ppZBNY1xFoG8E2x95Co08mIYBQ&s", "description": "Las uvas son una fruta pequeña y dulce, ideales para comer frescas o en vino."},
-    {"id":12, "name": "Espinacas", "price": 2.99, "category": "Verduras", "imageUrl": "https://i.blogs.es/10d3c5/espinacas-rec/450_1000.jpg", "description": "Las espinacas son una verdura de hoja verde rica en hierro y nutrientes esenciales."},
-    {"id":13, "name": "Aguacates", "price": 2.49, "category": "Frutas", "imageUrl": "https://cdn0.ecologiaverde.com/es/posts/4/2/4/el_aguacate_es_una_fruta_5424_600.jpg", "description": "El aguacate es una fruta cremosa y rica en grasas saludables, perfecta para ensaladas o como snack."},
-    {"id":14, "name": "Calabacines", "price": 3.49, "category": "Verduras", "imageUrl": "https://s1.abcstatics.com/media/bienestar/2020/09/09/calabacin-k9TD--1248x698@abc.jpg", "description": "Los calabacines son una verdura versátil, baja en calorías y rica en agua."},
-    {"id":15, "name": "Kiwis amarillos", "price": 3.99, "category": "Frutas", "imageUrl": "https://quieronaranjas.com/4480-large_default/kiwis-amarillos-ecologicos-de-valencia-.jpg", "description": "El kiwi es una fruta tropical rica en vitamina C y antioxidantes."},
-    {"id":16, "name": "Lechuga", "price": 1.99, "category": "Verduras", "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkBKGqwmoMDEc7DsAVKPlnXl6cI766TcWsmw&s", "description": "La lechuga es una verdura fresca ideal para ensaladas, baja en calorías."}
-    ]
-} 
-    
+  "products": [
+    {
+      "id": "2",
+      "name": "Plátanos",
+      "price": 3.99,
+      "category": "Frutas",
+      "imageUrl": "https://i.blogs.es/81b63d/platanos/500_333.jpeg",
+      "description": "Los plátanos son una fruta tropical rica en potasio y vitaminas, ideales para una dieta equilibrada."
+    },
+    {
+      "id": "3",
+      "name": " Pimientos rojos",
+      "price": 2.99,
+      "category": "Verduras",
+      "imageUrl": "https://www.supermercadoseljamon.com/documents/10180/892067/54001162_G.jpg",
+      "description": "Los pimientos rojos son una verdura crujiente y llena de vitaminas, perfecta para ensaladas o guisos."
+    },
+    {
+      "id": "4",
+      "name": "Berenjenas",
+      "price": 3.99,
+      "category": "Verduras",
+      "imageUrl": "https://cdn-prod.medicalnewstoday.com/content/images/articles/279/279359/two-eggplants-on-a-wooden-table.jpg",
+      "description": "Las berenjenas son una verdura versátil que se puede cocinar de muchas maneras, desde gratinadas hasta estofadas."
+    },
+    {
+      "id": "5",
+      "name": "Fresas",
+      "price": 5.99,
+      "category": "Frutas",
+      "imageUrl": "https://petitfitbycris.com/wp-content/uploads/2020/05/fresa.jpg",
+      "description": "Las fresas son una fruta dulce y jugosa, ricas en vitamina C y antioxidantes."
+    },
+    {
+      "id": "6",
+      "name": "Tomates",
+      "price": 4.99,
+      "category": "Verduras",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDDEwt9epgsbNR_1iE6MWyzo9wBhv1J1gwxw&s",
+      "description": "Los tomates son una verdura muy utilizada en la cocina mediterránea, rica en licopeno y vitaminas."
+    },
+    {
+      "id": "7",
+      "name": "Brocoli",
+      "price": 2.99,
+      "category": "Verduras",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyM5TCt5M0UyGs7MiRPtQg-a5aCgqazIwYg&s",
+      "description": "El brócoli es una verdura crucífera rica en nutrientes, ideal para una dieta saludable."
+    },
+    {
+      "id": "8",
+      "name": "Naranjas",
+      "price": 2.99,
+      "category": "Frutas",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsSJp3vHvZ3GV6jmAnFm8D8AOwahCO6qq3g&s",
+      "description": "Las naranjas son una fruta cítrica rica en vitamina C, perfecta para una dieta equilibrada."
+    },
+    {
+      "id": "10",
+      "name": "Zanahorias",
+      "price": 1.49,
+      "category": "Verduras",
+      "imageUrl": "https://img2.rtve.es/n/2452903?w=1600",
+      "description": "Las zanahorias son una verdura crujiente rica en vitamina A, perfecta para ensaladas o cocidas."
+    },
+    {
+      "id": "11",
+      "name": "Uvas",
+      "price": 4.99,
+      "category": "Frutas",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ebpme418ppZBNY1xFoG8E2x95Co08mIYBQ&s",
+      "description": "Las uvas son una fruta pequeña y dulce, ideales para comer frescas o en vino."
+    },
+    {
+      "id": "12",
+      "name": "Espinacas",
+      "price": 2.99,
+      "category": "Verduras",
+      "imageUrl": "https://i.blogs.es/10d3c5/espinacas-rec/450_1000.jpg",
+      "description": "Las espinacas son una verdura de hoja verde rica en hierro y nutrientes esenciales."
+    },
+    {
+      "id": "13",
+      "name": "Aguacates",
+      "price": 2.49,
+      "category": "Frutas",
+      "imageUrl": "https://cdn0.ecologiaverde.com/es/posts/4/2/4/el_aguacate_es_una_fruta_5424_600.jpg",
+      "description": "El aguacate es una fruta cremosa y rica en grasas saludables, perfecta para ensaladas o como snack."
+    },
+    {
+      "id": "14",
+      "name": "Calabacines",
+      "price": 3.49,
+      "category": "Verduras",
+      "imageUrl": "https://s1.abcstatics.com/media/bienestar/2020/09/09/calabacin-k9TD--1248x698@abc.jpg",
+      "description": "Los calabacines son una verdura versátil, baja en calorías y rica en agua."
+    },
+    {
+      "id": "15",
+      "name": "Kiwis amarillos",
+      "price": 3.99,
+      "category": "Frutas",
+      "imageUrl": "https://quieronaranjas.com/4480-large_default/kiwis-amarillos-ecologicos-de-valencia-.jpg",
+      "description": "El kiwi es una fruta tropical rica en vitamina C y antioxidantes."
+    },
+    {
+      "id": "16",
+      "name": "Lechuga",
+      "price": 1.99,
+      "category": "Verduras",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkBKGqwmoMDEc7DsAVKPlnXl6cI766TcWsmw&s",
+      "description": "La lechuga es una verdura fresca ideal para ensaladas, baja en calorías."
+    },
+    {
+      "name": "Manzanas",
+      "price": 3.45,
+      "description": "Las manzanas rojas perfectas en cualquier momento",
+      "category": "Fruta",
+      "imageUrl": "https://lomejordelafruta.com/1160-product_zoom/manzanas-ambrosia.jpg",
+      "id": "7fgbT7Zw7U8"
+    },
+    {
+      "name": "Peras",
+      "price": 2.45,
+      "description": "Las peras dulces y perfectas para comer en cualquier momento",
+      "category": "Fruta",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQst8BwJEwwomqM1NZBhLeCdIKzffKdPyskkQ&s",
+      "id": "jt5-gRfTKL4"
+    },
+    {
+      "name": "Manzanas",
+      "price": 2.45,
+      "description": "Manzanas rojas perfectas para tomar en cualquier sitio",
+      "category": "Fruta",
+      "imageUrl": "https://lomejordelafruta.com/1160-product_zoom/manzanas-ambrosia.jpg",
+      "id": "bdCGhhMRyG0"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
