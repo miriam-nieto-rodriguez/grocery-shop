@@ -1,21 +1,23 @@
-<article class="product-card card text-center h-100 hover-card">
+<article class="product-card card h-100 hover-card">
 
-    <a [routerLink]="['/product-detail', myProduct()?.id]">
-        <img class="card-img-top mb-2" [src]="myProduct()?.imageUrl" [alt]="myProduct()?.name" width="200" height="200"
-            style="object-fit: cover;">
+    <a [routerLink]="['/product-detail', myProduct()?.id]" class="product-img-link">
+        <img class="card-img-top" [src]="myProduct()?.imageUrl" [alt]="myProduct()?.name">
     </a>
 
     <div class="card-body">
-        <h5 class="card-title fw-bold text-dark">{{ myProduct()?.name }}</h5>
-        <p class="card-text fs-5 fw-semibold" style="color: #4a6d2c;">{{ myProduct()?.price?.toFixed(2) }} €</p>
+        <h5 class="card-title fw-semibold text-dark">{{ myProduct()?.name }}</h5>
+        <p class="card-text fs-5" style="color:  #2C5F2D;">{{ myProduct()?.price?.toFixed(2) }} € /kg</p>
+
+
+
     </div>
 
-    <div class="d-flex justify-content-center mt-2 mb-3 gap-2">
+    <div class="d-flex justify-content-center mt-auto p-4 gap-2">
         <button class="btn btn-carrito" (click)="cartService.addToCart(myProduct()!)">
             Añadir
         </button>
-        <button class="btn btn-outline-danger"  (click)="deleteProduct(myProduct()?.id!)">
-            Borrar 
+        <button class="btn btn-outline-danger" (click)="deleteProduct(myProduct()?.id!)">
+            Borrar
         </button>
     </div>
 
