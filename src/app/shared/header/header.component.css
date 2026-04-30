@@ -16,7 +16,7 @@
 }
 
 .active {
-    background-color: #7CA94E;
+    background-color:#2C5F2D;
     color: white !important;
     border-radius: 5px;
     padding: 6px 12px;
@@ -24,7 +24,7 @@
 }
 
 .active:hover {
-    background-color: #679438;
+    background-color: #285329;
     transform: translateY(-1px)
 }
 
