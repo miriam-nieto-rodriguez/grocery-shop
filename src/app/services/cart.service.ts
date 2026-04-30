@@ -40,7 +40,7 @@ export class CartService {
 
   }
 
-    limpiarCarrito() {
+  limpiarCarrito() {
     this.carrito.set([])
     localStorage.removeItem('cart')
   }

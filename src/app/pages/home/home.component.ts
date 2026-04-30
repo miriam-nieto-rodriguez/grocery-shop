@@ -14,15 +14,28 @@ export class HomeComponent {
   arrProducts = signal<IProduct[]>([])
   currentPage = signal<number>(1)
   itemsPerPage = signal<number>(8)
+  filterText = signal<string>('')
+
+  productsFiltrados = computed(() => {
+    const texto = this.filterText().toLowerCase();
+    if(!texto) return this.arrProducts()
+
+      return this.arrProducts().filter (p =>
+        p.name.toLowerCase().includes(texto) ||
+        p.category?.toLowerCase().includes(texto)
+      )
+
+    
+  });
 
   productsPaginados = computed(() => {
     const inicio = (this.currentPage() - 1) * this.itemsPerPage();
     const fin = inicio + this.itemsPerPage();
-    return this.arrProducts().slice(inicio, fin);
+    return this.productsFiltrados().slice(inicio, fin);
   })
 
   totalPages = computed(() => {
-    return Math.ceil(this.arrProducts().length / this.itemsPerPage());
+    return Math.ceil(this.productsFiltrados().length / this.itemsPerPage());
   })
 
   ngOnInit() {
@@ -48,6 +61,24 @@ export class HomeComponent {
     if (this.currentPage() > totalPaginas && totalPaginas > 0) {
       this.currentPage.set(totalPaginas);
     }
+  }
+
+  onSearch(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.filterText.set(input.value)
+    this.currentPage.set(1)
+  }
+
+  filtrarPorCategoria(categoria: string){
+    if (this.filterText() === categoria){
+      this.filterText.set('');
+    }else {
+      this.filterText.set(categoria)
+    }
+
+
+
+    this.currentPage.set(1)
   }
 
 }
