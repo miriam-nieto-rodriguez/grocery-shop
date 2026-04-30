@@ -1,17 +1,56 @@
 <div class="container mt-5 pb-5">
-    <h1>Bienvenido a nuestra tienda</h1>
+    <h1 class="titulo">Productos Frescos del Huerto</h1>
+    <h4 class="subtitulo">Directo a tu mesa, cultivado con amor</h4>
+    <div class="search-container mt-4">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Buscar frutas, verduras..." (input)="onSearch($event)">
+        </div>
+    </div>
+
+    <section class="categories-section mt-5">
+        <h2 class="mb-4 categorias">Categorías</h2>
+        <div class="categories-grid">
+
+            <div class="category-card" (click)="filtrarPorCategoria('fruta')"
+            [class.selected]="filterText() === 'fruta'">
+                <span class="category-icon">🍎</span>
+                <p>Frutas</p>
+            </div>
+            <div class="category-card" (click)="filtrarPorCategoria('verdura')"
+            [class.selected]="filterText() === 'verdura'">
+                <span class="category-icon">🥦</span>
+                <p>Verduras</p>
+            </div>
+            <div class="category-card" (click)="filtrarPorCategoria('hierba')"
+            [class.selected]="filterText() === 'hierba'">
+                <span class="category-icon">🌿</span>
+                <p>Hierbas</p>
+            </div>
+            <div class="category-card" (click)="filtrarPorCategoria('especiales')"
+            [class.selected]="filterText() === 'especiales'">
+                <span class="category-icon">✨</span>
+                <p>Especiales</p>
+
+            </div>
+        </div>
+    </section>
+
     <section class="row mt-5">
+        <h2 class="mb-4 productos"> Todos los productos</h2>
         @for(product of productsPaginados(); track product.id){
-            <article class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <app-product-card [myProduct]="product" (productDeleted)="eventDelete($event)"></app-product-card>
-            </article>
+        <article class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <app-product-card [myProduct]="product" (productDeleted)="eventDelete($event)"></app-product-card>
+        </article>
         }
     </section>
 
-    <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-5" >
-        <button class="btn-paginacion" (click)="currentPage.set(currentPage() - 1)" [disabled]="currentPage() === 1">← Anterior</button>
+    <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-5">
+        <button class="btn-paginacion" (click)="currentPage.set(currentPage() - 1)" [disabled]="currentPage() === 1">←
+            Anterior</button>
         <span class="paginacion-info shadow-sm">Página {{currentPage()}} de {{totalPages()}}</span>
-        <button class="btn-paginacion" (click)="currentPage.set(currentPage() + 1)" [disabled]="currentPage() >= totalPages()">Siguiente →</button>
+        <button class="btn-paginacion" (click)="currentPage.set(currentPage() + 1)"
+            [disabled]="currentPage() >= totalPages()">Siguiente →</button>
     </div>
 
 </div>

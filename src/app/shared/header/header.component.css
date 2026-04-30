@@ -1,3 +1,10 @@
+.navbar-brand{
+    padding: 20px 5%;
+    color: #2C5F2D;
+    font-family: sans-serif;
+    font-size: 30px;
+}
+
 .nav-link {
     transition: all 0.3 ease;
     padding: 8px 16px;

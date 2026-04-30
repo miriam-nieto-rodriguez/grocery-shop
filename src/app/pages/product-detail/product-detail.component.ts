@@ -38,7 +38,7 @@ export class ProductDetailComponent {
   }
 
   cambiarCantidad(valor: number){
-    this.cantidad.update(current=> Math.max(1, current + valor))
+    this.cantidad.update(valorActual=> Math.max(1, valorActual + valor))
   }
 
   agregarAlCarrito(){
@@ -51,7 +51,7 @@ export class ProductDetailComponent {
 
       toast.success(`Has añadido al carrito ${this.cantidad()} unidad(es) de ${product.name}`)
 
-      this.cantidad.set(1)
+      this.cantidad.set(1) // limpiamos 
     }
 
   }
