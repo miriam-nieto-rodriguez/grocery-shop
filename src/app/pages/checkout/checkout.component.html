@@ -1,0 +1,149 @@
+<div class="container mt-4 mb-5">
+    <!-- Botón Volver -->
+    <div class="mb-4">
+        <a routerLink="/home" class="text-decoration-none text-success fw-semibold">
+            <i class="bi bi-arrow-left"></i> ← Volver a la tienda
+        </a>
+        <h2 class="titulos mt-5 mb-5">Finalizar Compra</h2>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)=" confirmarPedido()">
+        <div class="row g-4">
+            <!-- COLUMNA IZQUIERDA: FORMULARIOS -->
+            <div class="col-lg-8">
+
+                <!-- Tarjeta 1: Información de contacto -->
+                <div class="card border-0 shadow-sm p-4 mb-4" style="border-radius: 15px;">
+                    <h5 class="titulos mb-4"> Información de contacto</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="nombre" class="text-muted small fw-bold mb-2"> Nombre completo</label>
+                            <input type="text" class="form-control custom input" formControlName="nombre" id="nombre">
+
+                            @if (checkControl('nombre', 'required')){
+                            <p class="text-danger mt-1"> Campo obligatorio</p>
+                            }
+
+                            @if(checkControl('nombre', 'minlength')){
+                            <p class="text-danger mt-1">Campo con longitud mínima de 3 caracteres</p>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label text-muted small fw-bold">Teléfono</label>
+                            <input type="text" class="form-control custom-input" formControlName="telefono" id="telefono">
+
+                            @if (checkControl('telefono', 'required')){
+                            <p class="text-danger mt-1"> Campo obligatorio</p>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label text-muted small fw-bold">Email</label>
+                            <input type="text" class="form-control custom-input" formControlName="email" id="email">
+
+                            @if (checkControl('email', 'required')){
+                            <p class="text-danger mt-1"> Campo obligatorio</p>
+                            }
+
+                            @if(checkControl('email', 'pattern')){
+                            <p class="text-danger mt-1">El formato del email no es correcto</p>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Dirección de entrega -->
+                <div class="card border-0 shadow-sm p-4" style="border-radius: 15px;">
+                    <h5 class="titulos mb-4">Dirección de entrega</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="direccion" class="form-label text-muted small fw-bold">Dirección</label>
+                            <input type="text" class="form-control custom-input" formControlName="nombre" formControlName="direccion" id="direccion">
+
+                            @if (checkControl('direccion', 'required')){
+                            <p class="text-danger mt-1"> Campo obligatorio</p>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="codigoPostal" class="form-label text-muted small fw-bold">Código Postal</label>
+                            <input type="text" class="form-control custom-input" formControlName="cp" id="codigoPostal">
+
+                             @if (checkControl('cp', 'required')){
+                            <p class="text-danger mt-1"> Campo obligatorio</p>
+                            }
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="ciudad" class="form-label text-muted small fw-bold">Ciudad</label>
+                            <input type="text" class="form-control custom-input" formControlName="ciudad" id="ciudad">
+
+                             @if (checkControl('ciudad', 'required')){
+                            <p class="text-danger mt-1"> Campo obligatorio</p>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+                <button type="submit" [disabled]="userForm.invalid || cargando()"
+                    class="btn btn-lg w-100 py-3 shadow-sm">
+
+                    @if(cargando()){
+                        <span class=" me-2">
+                            Procesando...
+                        </span>
+                    } @else {
+                        Confirmar Pedido
+                    }
+
+                </button>
+            </div>
+
+            <!-- COLUMNA DERECHA: RESUMEN DE PEDIDO -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-4 sticky-top" style="border-radius: 15px; top: 20px;">
+                    <h5 class="titulos mb-3">Resumen de pedido</h5>
+                    <hr class="text-muted">
+
+                    <!-- Lista de productos en miniatura -->
+                    <div class="product-list mb-3" style="max-height: 250px; overflow-y: auto;">
+                        @for (item of cartServices.carrito(); track item.product.id) {
+                        <div class="d-flex align-items-center mb-3">
+                            <img [src]="item.product.imageUrl" class="rounded me-3"
+                                style="width: 50px; height: 50px; object-fit: cover;">
+                            <div class="flex-grow-1">
+                                <p class="mb-0 small fw-bold text-truncate" style="max-width: 150px;">{{
+                                    item.product.name
+                                    }}</p>
+                                <small class="text-muted">Cantidad: {{ item.quantity }}</small>
+                            </div>
+                            <span class="small fw-semibold">{{ (item.product.price * item.quantity).toFixed(2)
+                                }}€</span>
+                        </div>
+                        }
+                    </div>
+
+                    <hr class="text-muted">
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Subtotal</span>
+                        <span class="fw-semibold">{{ cartServices.totalCarrito().toFixed(2) }}€</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="text-muted">Envío</span>
+                        <span class="text-success fw-bold">Gratis</span>
+                    </div>
+
+                    <hr class="text-muted">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class=" fs-5">Total</span>
+                        <span class="precioTotal fw-bold fs-3">{{ cartServices.totalCarrito().toFixed(2) }}€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

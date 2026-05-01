@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { IProduct, IProductItem } from '../interfaces/iproduct.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
@@ -11,6 +11,15 @@ export class CartService {
   private apiUrl = 'http://localhost:3000/products'
 
   carrito = signal<IProductItem[]>([]);
+
+
+  totalCarrito = computed(()=>{
+    return this.carrito().reduce((acc, item) => acc + (item.product.price * item.quantity ), 0);
+  })
+
+  cantidadTotal = computed(()=>{
+    return this.carrito().reduce((acc, item) => acc + item.quantity, 0);
+  })
 
 
   getProducts(): Promise<IProduct[]> {

@@ -14,16 +14,13 @@
                 </li>
 
                 <li class="nav-item me-3 position-relative">
-                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="active">Carrito 🛒 </a>
+                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="active"> 🛒 </a>
                     @if(cartService.carrito().length > 0) {
                     <span class="badge rounded-pill bg-success badge-cart">{{cartService.carrito().length}}</span>
                     <span class="visually-hidden">productos en el carrito</span>
                     }
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/product-form']" routerLinkActive="active">Nuevo producto ➕ </a>
-                </li>
 
             </ul>
         </div>

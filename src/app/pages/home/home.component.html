@@ -40,7 +40,7 @@
         <h2 class="mb-4 productos"> Todos los productos</h2>
         @for(product of productsPaginados(); track product.id){
         <article class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <app-product-card [myProduct]="product" (productDeleted)="eventDelete($event)"></app-product-card>
+            <app-product-card [myProduct]="product"></app-product-card>
         </article>
         }
     </section>

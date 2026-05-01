@@ -14,28 +14,9 @@ export class CartComponent {
   carrito = this.cartServices.carrito;
   router = inject(Router)
 
-  getTotal() {
-    return this.carrito().reduce((total, item) => total + item.product.price * item.quantity, 0);
-  }
 
-  totalCarrito() {
-    return this.cartServices.carrito().reduce((acc, item) => acc + item.product.price, 0);
-  }
-
-  async realizarPago() {
-    await Swal.fire({
-      title: '¡Pago realizado!',
-      text: 'Tu pedido ha sido procesado con éxito. ¡Gracias por confiar en Fresh Market! 🥦',
-      icon: 'success',
-      confirmButtonText: 'Genial',
-      confirmButtonColor: '#28a745',
-      timer: 8000,
-      timerProgressBar: true
-    });
-
-    this.cartServices.limpiarCarrito()
-
-    this.router.navigate(['/home'])
+  realizarPago() {
+    this.router.navigate(['/checkout']);
   }
 
 
