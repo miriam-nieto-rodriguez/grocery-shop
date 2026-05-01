@@ -1,0 +1,51 @@
+.volver {
+    color: #2C5F2D;
+}
+
+.titulos {
+    color: #2C5F2D;
+}
+
+
+.custom-input {
+    border: 1.5px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: all 0.3 ease;
+}
+
+.custom-input:focus {
+    border-color: #7CA9AE;
+    box-shadow: 0 0 0 3px rgba(124, 169, 78, 0.15);
+    outline: none;
+}
+
+.card {
+    background-color: #ffff;
+}
+
+.btn {
+    background-color: #FF6B35;
+    color: white;
+    border: none;
+    margin-top: 30px;
+    border-radius: 12px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn {
+    background-color: #fe5010;
+    transform: translateY(-2px);
+}
+.products-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.product-list::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.precioTotal {
+    color: #2C5F2D;
+}

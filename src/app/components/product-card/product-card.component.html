@@ -8,16 +8,11 @@
         <h5 class="card-title fw-semibold text-dark">{{ myProduct()?.name }}</h5>
         <p class="card-text fs-5" style="color:  #2C5F2D;">{{ myProduct()?.price?.toFixed(2) }} € /kg</p>
 
-
-
     </div>
 
-    <div class="d-flex justify-content-center mt-auto p-4 gap-2">
-        <button class="btn btn-carrito" (click)="cartService.addToCart(myProduct()!)">
+    <div class="d-flex justify-content-center mt-auto p-4">
+        <button class="btn btn-carrito w-100" (click)="cartService.addToCart(myProduct()!)">
             Añadir
-        </button>
-        <button class="btn btn-outline-danger" (click)="deleteProduct(myProduct()?.id!)">
-            Borrar
         </button>
     </div>
 

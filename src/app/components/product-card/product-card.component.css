@@ -20,8 +20,9 @@
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(124, 169, 78, 0.15);
-    color:  #2C5F2D;
 }
+
+
 
 .card-img-top {
     width: 100%;
