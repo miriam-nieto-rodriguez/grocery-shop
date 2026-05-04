@@ -1,3 +1,7 @@
+.volver{
+  color: #2C5F2D;
+}
+
 .product-img {
   width: 100%;
   height: 450px;
@@ -29,29 +33,20 @@
   padding-left: 40px;
 }
 
-.category {
-  display: inline-block;
-  background-color: #f0f4ea;
-  color: #4a6d2c;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
+.product-details h1 {
+  color: #2C5F2D;
 }
 
 .price {
-  font-size: 2.2rem;
-  font-weight: 500;
-  color: #2d3e1d;
+  font-size: 30px;
+
+  color: #2C5F2D;
   margin: 10px 0;
 }
 
 .quantity-controls {
-  background: #f8f9fa;
-  border: 1px solid #eee;
+  background:transparent;
+  border: none;
   border-radius: 50px;
   padding: 5px;
   width: fit-content;
@@ -60,6 +55,7 @@
 
 .btn-menos,
 .btn-mas {
+  background-color: transparent;
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -73,25 +69,12 @@
   justify-content: center;
 }
 
-.btn-menos {
-  background-color: #ffeded;
-  color: #ff5c5c;
-}
-
-.btn-mas {
-  background-color: #e8f5e9;
-  color: #4caf50;
-}
-
-.btn-menos:hover {
-  background-color: #ff5c5c;
-  color: white;
-}
-
+.btn-menos:hover,
 .btn-mas:hover {
-  background-color: #4caf50;
+  background-color: #2C5F2D;
   color: white;
 }
+
 
 .quantity {
   font-weight: 700;
@@ -102,7 +85,7 @@
 }
 
 .btn-carrito {
-  background-color: #7CA94E;
+  background-color:#FF6B35 ;
   color: white;
   border: none;
   padding: 12px 30px;
@@ -113,37 +96,10 @@
 }
 
 .btn-carrito:hover {
-  background-color: #679438;
+  background-color: #fc5315;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(124, 169, 78, 0.3);
 }
 
-.btn-editar {
-  background-color: white;
-  color: #f39c12;
-  border: 2px solid #f39c12;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
 
-.btn-editar:hover {
-  background-color: #f39c12;
-  color: white;
-}
 
-.btn-volver {
-  background-color: #e9ecef;
-  color: #6c757d;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-.btn-volver:hover {
-  background-color: #adb5bd;
-  color: white;
-}

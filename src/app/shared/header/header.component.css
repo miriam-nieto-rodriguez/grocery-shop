@@ -1,26 +1,73 @@
-.navbar-brand{
+.navbar-brand {
     padding: 20px 5%;
     color: #2C5F2D;
     font-family: sans-serif;
     font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.nav-link {
-    transition: all 0.3 ease;
-    padding: 8px 16px;
+.logo-hoja {
+    background-color: #2C5F2D;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3 ease;
+
+}
+
+.logo-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.navbar-brand:hover .logo-circle {
+    transform: rotate(15deg) scale(1.1);
+}
+
+
+#navbarNav .nav-link {
+    transition: all 0.3s ease;
     border-radius: 8px;
-    color: #555;
+    color: #2C5F2D;
+    opacity: 1;
     font-weight: 500;
-
-
+    display: flex;
+    align-items: center;
 }
 
-.active {
-    background-color:#2C5F2D;
-    color: white !important;
+.img_verde, .img_blanca {
+    width: 25px;
+    height: 25px;
+}
+
+#navbarNav .img_blanca {
+    display: none;
+}
+
+#navbarNav .img_verde {
+    display: inline-block;
+}
+
+
+#navbarNav .nav-link.active {
+background-color: #2C5F2D;
+    color: white !important; 
     border-radius: 5px;
     padding: 6px 12px;
     box-shadow: 0 4px 10px rgba(124, 169, 78, 0.3);
+}
+
+#navbarNav .nav-link.active .img_verde {
+    display: none;
+}
+
+#navbarNav .nav-link.active .img_blanca {
+    display: inline-block;
 }
 
 .active:hover {
@@ -37,6 +84,7 @@
     padding: 0px 6px;
     height: 20px;
     display: flex;
+    background-color: #FF6B35;
     align-items: center;
     justify-content: center;
     border: 2px solid white;

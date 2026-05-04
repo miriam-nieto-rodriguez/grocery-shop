@@ -1,4 +1,9 @@
 <div class="container mt-5">
+    <div class="mb-4">
+        <a routerLink="/home" class="text-decoration-none fw-semibold volver">
+            <i class="bi bi-arrow-left"></i> ← Volver a la tienda
+        </a>
+    </div>
     @if (product()) {
     <article class="row">
         <div class="col-md-6">
@@ -8,10 +13,10 @@
         </div>
         <div class="col-md-6 product-details">
             <h1>{{ product()!.name }}</h1>
-            <p class="category">{{ product()!.category }}</p>
-            <p class="price">{{ product()!.price | currency:'EUR' }}</p>
+            <p class="price">{{ product()!.price | currency:'EUR' }} /kg</p>
             <p>{{ product()!.description }}</p>
             <div class="quantity-controls d-flex align-items-center me-4">
+                <small>Cantidad (kg)</small>
                 <button class="btn-menos" (click)="cambiarCantidad(-1)">-</button>
 
                 <span class="quantity">
@@ -22,10 +27,9 @@
 
             </div>
             <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-2 flex-wrap">
-                <button class="btn-carrito" (click)="agregarAlCarrito()">
+                <button class="btn-carrito w-100" (click)="agregarAlCarrito()">
                     Añadir al carrito
                 </button>
-                <button class="btn-volver" [routerLink]="['/home']">Volver al listado</button>
             </div>
 
         </div>

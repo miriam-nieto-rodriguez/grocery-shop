@@ -14,22 +14,34 @@
 
             <div class="category-card" (click)="filtrarPorCategoria('fruta')"
             [class.selected]="filterText() === 'fruta'">
-                <span class="category-icon">🍎</span>
+                <span class="category-icon">
+                    <img src="apple.svg" alt="fruta" class="image-verde">
+                    <img src="apple-white.svg" alt="fruta" class="image-blanca">
+                </span>
                 <p>Frutas</p>
             </div>
             <div class="category-card" (click)="filtrarPorCategoria('verdura')"
             [class.selected]="filterText() === 'verdura'">
-                <span class="category-icon">🥦</span>
+                <span class="category-icon">
+                    <img src="carrot.svg" alt="verdura" class="image-verde">
+                    <img src="carrot-white.svg" alt="verdura" class="image-blanca">
+                </span>
                 <p>Verduras</p>
             </div>
             <div class="category-card" (click)="filtrarPorCategoria('hierba')"
             [class.selected]="filterText() === 'hierba'">
-                <span class="category-icon">🌿</span>
+                <span class="category-icon">
+                    <img src="leaf.svg" alt="hierba" class="image-verde">
+                    <img src="leaf-white.svg" alt="hierba" class="image-blanca">
+                </span>
                 <p>Hierbas</p>
             </div>
             <div class="category-card" (click)="filtrarPorCategoria('especiales')"
             [class.selected]="filterText() === 'especiales'">
-                <span class="category-icon">✨</span>
+                <span class="category-icon">
+                    <img src="star.svg" alt="especiales" class="image-verde">
+                    <img src="star-white.svg" alt="especiales" class="image-blanca">
+                </span>
                 <p>Especiales</p>
 
             </div>
