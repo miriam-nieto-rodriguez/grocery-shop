@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "2",
-      "name": "Plátanos",
+      "name": "Plátanos de Canarias",
       "price": 3.99,
       "category": "Frutas",
       "imageUrl": "https://i.blogs.es/81b63d/platanos/500_333.jpeg",
@@ -27,34 +27,34 @@
     {
       "id": "5",
       "name": "Fresas",
-      "price": 5.99,
+      "price": 6.20,
       "category": "Frutas",
       "imageUrl": "https://petitfitbycris.com/wp-content/uploads/2020/05/fresa.jpg",
-      "description": "Las fresas son una fruta dulce y jugosa, ricas en vitamina C y antioxidantes."
+      "description": "Fresas frescas de temporada, recogidas en su punto óptimo de maduración. Dulces y jugosas."
     },
     {
       "id": "6",
-      "name": "Tomates",
-      "price": 4.99,
+      "name": "Tomates Cherries",
+      "price": 4.50,
       "category": "Verduras",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDDEwt9epgsbNR_1iE6MWyzo9wBhv1J1gwxw&s",
-      "description": "Los tomates son una verdura muy utilizada en la cocina mediterránea, rica en licopeno y vitaminas."
+      "imageUrl": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&q=80",
+      "description": "Tomates cherry cultivados sin pesticidas en huertos locales. Sabor dulce y textura firme, perfectos para ensaladas y snacks."
     },
     {
       "id": "7",
       "name": "Brocoli",
       "price": 2.99,
       "category": "Verduras",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyM5TCt5M0UyGs7MiRPtQg-a5aCgqazIwYg&s",
+      "imageUrl": "https://www.lavanguardia.com/files/image_948_465/uploads/2018/10/12/5ea9ba110d255.jpeg",
       "description": "El brócoli es una verdura crucífera rica en nutrientes, ideal para una dieta saludable."
     },
     {
       "id": "8",
-      "name": "Naranjas",
-      "price": 2.99,
+      "name": "Naranjas de Valencia",
+      "price": 2.80,
       "category": "Frutas",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsSJp3vHvZ3GV6jmAnFm8D8AOwahCO6qq3g&s",
-      "description": "Las naranjas son una fruta cítrica rica en vitamina C, perfecta para una dieta equilibrada."
+      "imageUrl": "https://images.unsplash.com/photo-1547514701-42782101795e?w=800&q=80",
+      "description": "Zanahorias crujientes y dulces de cultivo orgánico. Ricas en betacaroteno y fibra."
     },
     {
       "id": "10",
@@ -75,25 +75,25 @@
     {
       "id": "12",
       "name": "Espinacas",
-      "price": 2.99,
+      "price": 5.10,
       "category": "Verduras",
       "imageUrl": "https://i.blogs.es/10d3c5/espinacas-rec/450_1000.jpg",
-      "description": "Las espinacas son una verdura de hoja verde rica en hierro y nutrientes esenciales."
+      "description": "tiernas y orgánicas, perfectas para ensaladas frescas o salteados rápidos."
     },
     {
       "id": "13",
-      "name": "Aguacates",
-      "price": 2.49,
+      "name": "Aguacates Hass",
+      "price": 3.80,
       "category": "Frutas",
       "imageUrl": "https://cdn0.ecologiaverde.com/es/posts/4/2/4/el_aguacate_es_una_fruta_5424_600.jpg",
-      "description": "El aguacate es una fruta cremosa y rica en grasas saludables, perfecta para ensaladas o como snack."
+      "description": "Aguacates Hass de cultivo local, cremosos y ricos en grasas saludables. Ideal para tostadas y ensaladas."
     },
     {
-      "name": "Calabacines",
-      "price": 3.49,
-      "description": "Los calabacines son una verdura versátil, baja en calorías y rica en agua.",
-      "category": "Verduras",
-      "imageUrl": "https://s1.abcstatics.com/media/bienestar/2020/09/09/calabacin-k9TD--1248x698@abc.jpg",
+      "name": "Albahaca Fresca",
+      "price": 2.50,
+      "description": "Maceta de albahaca fresca cultivada localmente. Aroma intenso para dar vida a tus platos.",
+      "category": "Hierbas",
+      "imageUrl": "https://images.unsplash.com/photo-1618375569909-3c8616cf7733?w=800&q=80",
       "id": "14"
     },
     {
@@ -106,11 +106,11 @@
     },
     {
       "id": "16",
-      "name": "Lechuga",
+      "name": "Lechuga Batavia",
       "price": 1.99,
       "category": "Verduras",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkBKGqwmoMDEc7DsAVKPlnXl6cI766TcWsmw&s",
-      "description": "La lechuga es una verdura fresca ideal para ensaladas, baja en calorías."
+      "imageUrl": "https://gardencenterejea.com/7429-medium_default/lechuga-batavia-5-g.jpg",
+      "description": "Lechuga Batavia crujiente y tierna, perfecta para ensaladas frescas y bocadillos saludables. Rica en agua y fibra, aporta un sabor delicado y ligero a tus recetas."
     },
     {
       "name": "Manzanas",
@@ -121,11 +121,11 @@
       "id": "7fgbT7Zw7U8"
     },
     {
-      "name": "Peras",
-      "price": 2.45,
-      "description": "Las peras son una fruta jugosa y dulce, ricas en vitaminas y minerales, ideales para una dieta saludable.",
-      "category": "Fruta",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQst8BwJEwwomqM1NZBhLeCdIKzffKdPyskkQ&s",
+      "name": "Arándanos",
+      "price": 8.50,
+      "description": "Arándanos premium de alta calidad, ricos en antioxidantes. Perfectos para smoothies y postres.",
+      "category": "Especiales",
+      "imageUrl": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=800&q=80",
       "id": "jt5-gRfTKL4"
     }
   ],

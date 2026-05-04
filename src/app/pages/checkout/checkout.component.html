@@ -1,7 +1,7 @@
 <div class="container mt-4 mb-5">
     <!-- Botón Volver -->
     <div class="mb-4">
-        <a routerLink="/home" class="text-decoration-none text-success fw-semibold">
+        <a routerLink="/home" class="text-decoration-none fw-semibold volver">
             <i class="bi bi-arrow-left"></i> ← Volver a la tienda
         </a>
         <h2 class="titulos mt-5 mb-5">Finalizar Compra</h2>
@@ -140,7 +140,7 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <span class=" fs-5">Total</span>
-                        <span class="precioTotal fw-bold fs-3">{{ cartServices.totalCarrito().toFixed(2) }}€</span>
+                        <span class="precioTotal fs-3">{{ cartServices.totalCarrito().toFixed(2) }}€</span>
                     </div>
                 </div>
             </div>
