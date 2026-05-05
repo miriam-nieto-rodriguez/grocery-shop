@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CurrencyPipe } from '@angular/common';
-import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-cart',

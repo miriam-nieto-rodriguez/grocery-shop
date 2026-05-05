@@ -1,6 +1,6 @@
 .navbar-brand {
     padding: 20px 5%;
-    color: #2C5F2D;
+    color: var(--color-verde);
     font-family: sans-serif;
     font-size: 30px;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .logo-hoja {
-    background-color: #2C5F2D;
+    background-color: var(--color-verde);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -33,7 +33,7 @@
 #navbarNav .nav-link {
     transition: all 0.3s ease;
     border-radius: 8px;
-    color: #2C5F2D;
+    color: var(--color-verde);
     opacity: 1;
     font-weight: 500;
     display: flex;
@@ -55,8 +55,8 @@
 
 
 #navbarNav .nav-link.active {
-background-color: #2C5F2D;
-    color: white !important; 
+background-color:var(--color-verde);
+    color: var(--blanco) !important; 
     border-radius: 5px;
     padding: 6px 12px;
     box-shadow: 0 4px 10px rgba(124, 169, 78, 0.3);
@@ -71,7 +71,7 @@ background-color: #2C5F2D;
 }
 
 .active:hover {
-    background-color: #285329;
+    background-color: var(--color-verde-hover);
     transform: translateY(-1px)
 }
 
@@ -84,8 +84,8 @@ background-color: #2C5F2D;
     padding: 0px 6px;
     height: 20px;
     display: flex;
-    background-color: #FF6B35;
+    background-color: var(--color-naranja);
     align-items: center;
     justify-content: center;
-    border: 2px solid white;
+    border: 2px solid var(--blanco);
 }

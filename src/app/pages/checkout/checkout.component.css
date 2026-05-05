@@ -1,47 +1,39 @@
 .volver, 
 .titulos {
-    color: #2C5F2D;
+    color: var(--color-verde);
 }
 
 .custom-input {
-    border: 1.5px solid #f0f0f0;
+    border: 1.5px solid var(--border);
     border-radius: 10px;
     padding: 10px 15px;
     transition: all 0.3 ease;
 }
 
 .custom-input:focus {
-    border-color: #7CA9AE;
+    border-color: var(--color-verde);
     box-shadow: 0 0 0 3px rgba(124, 169, 78, 0.15);
     outline: none;
 }
 
 .card {
-    background-color: #ffff;
+    background-color: var(--blanco);
 }
 
 .btn {
-    background-color: #FF6B35;
-    color: white;
+    background-color:  var(--color-naranja);
+    color: var(--blanco);
     border: none;
     margin-top: 30px;
     border-radius: 12px;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.btn {
-    background-color: #fe5010;
+.btn-confirmar {
+    background-color: var(--color-naranja-hover);
     transform: translateY(-2px);
-}
-.products-list::-webkit-scrollbar {
-    width: 4px;
-}
-
-.product-list::-webkit-scrollbar-thumb {
-    background: #e0e0e0;
-    border-radius: 10px;
 }
 
 .precioTotal {
-    color: #2C5F2D;
+    color:  var(--color-verde);
 }

@@ -13,17 +13,23 @@
         </div>
         <div class="col-md-6 product-details">
             <h1>{{ product()!.name }}</h1>
-            <p class="price">{{ product()!.price | currency:'EUR' }} /kg</p>
+            <p class="price">{{ product()!.price | currency:'EUR' }}
+                <span class="unidad-medida">/kg</span>
+            </p>
             <p>{{ product()!.description }}</p>
-            <div class="quantity-controls d-flex align-items-center me-4">
-                <small>Cantidad (kg)</small>
-                <button class="btn-menos" (click)="cambiarCantidad(-1)">-</button>
 
-                <span class="quantity">
-                    {{ cantidad() }}
-                </span>
+            <div class="quantity-controls">
+                <small class="d-block mb-3">Cantidad (kg)</small>
+                <div class="d-flex align-items-center">
+                    <button class="btn-menos" (click)="cambiarCantidad(-1)" [disabled]="cantidad() <= 1" >-</button>
 
-                <button class="btn-mas" (click)="cambiarCantidad(1)">+</button>
+                    <span class="quantity">
+                        {{ cantidad() }}
+                    </span>
+
+                    <button class="btn-mas" (click)="cambiarCantidad(1)">+</button>
+
+                </div>
 
             </div>
             <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-2 flex-wrap">

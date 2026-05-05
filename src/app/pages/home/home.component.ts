@@ -75,9 +75,7 @@ export class HomeComponent {
     }else {
       this.filterText.set(categoria)
     }
-
-
-
+    
     this.currentPage.set(1)
   }
 
