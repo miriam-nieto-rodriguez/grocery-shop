@@ -1,8 +1,8 @@
 .product-card {
-    background-color: white;
+    background-color: var(--blanco);
     border-radius: 15px;
     transition: transform 0.3s ease;
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--border);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
     overflow: hidden;
     padding: 0;
@@ -13,7 +13,7 @@
 .product-img-link {
     display: block;
     width: 100%;
-    height:280px;
+    height: 280px;
     overflow: hidden;
 }
 
@@ -41,10 +41,17 @@
     text-align: center;
 }
 
+.unidad-medida {
+    font-size: small;
+    vertical-align: middle;
+    margin-left: 2px;
+    color: var(--color-gris);
+}
+
 
 .btn-carrito {
-    background-color: #2C5F2D;
-    color: white;
+    background-color: var(--color-verde);
+    color: var(--blanco);
     border: none;
     border-radius: 10px;
     font-weight: 600;
@@ -54,21 +61,6 @@
 }
 
 .btn-carrito:hover {
-    background-color: #2d562e;
+    background-color: var(--color-verde-hover);
     transform: scale(1.05);
-}
-
-.btn-outline-danger {
-    border-radius: 10px;
-    border: 1px solid #ff6b6b;
-    color: #ff6b6b;
-    background: transparent;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-.btn-outline-danger:hover {
-    background-color: #ff6b6b;
-    color: white;
-    border-color: #ff6b6b;
 }

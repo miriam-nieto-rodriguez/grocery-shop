@@ -54,7 +54,7 @@
       "price": 2.80,
       "category": "Frutas",
       "imageUrl": "https://images.unsplash.com/photo-1547514701-42782101795e?w=800&q=80",
-      "description": "Zanahorias crujientes y dulces de cultivo orgánico. Ricas en betacaroteno y fibra."
+      "description": "Naranjas valencianas dulces y jugosas, perfectas para zumo o consumir directamente."
     },
     {
       "id": "10",
@@ -62,14 +62,14 @@
       "price": 1.49,
       "category": "Verduras",
       "imageUrl": "https://img2.rtve.es/n/2452903?w=1600",
-      "description": "Las zanahorias son una verdura crujiente rica en vitamina A, perfecta para ensaladas o cocidas."
+      "description": "Zanahorias crujientes y dulces de cultivo orgánico. Ricas en betacaroteno y fibra."
     },
     {
       "id": "11",
       "name": "Uvas",
       "price": 4.99,
       "category": "Frutas",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ebpme418ppZBNY1xFoG8E2x95Co08mIYBQ&s",
+      "imageUrl": "https://imagenes2.eltiempo.com/files/image_1200_535/uploads/2022/12/21/63a368f149cd9.jpeg",
       "description": "Las uvas son una fruta pequeña y dulce, ideales para comer frescas o en vino."
     },
     {

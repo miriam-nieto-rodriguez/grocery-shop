@@ -1,13 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     margin: 0;
-    background-color:  #F3F2EC;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:  var(--interfaz);
+    font-family: sans-serif;
 
 }
 
 .main {
     padding: 16px;
     height: 100vh;
+}
+
+:root {
+
+    /* Colores principales */
+    --color-verde: #2C5F2D;
+    --color-verde-hover: #214a22;
+    --color-naranja: #FF6B35;
+    --color-naranja-hover: #fc5315;
+    --color-gris: #7D7B7C;
+
+    /* Colores de fondo */
+    --interfaz:#F3F2EC;
+    --blanco: #FFFFFF;
+    --gris-suave: #ccc; 
+
+    /* Bordes */
+    --border: #f0f0f0; 
+    
 
 }

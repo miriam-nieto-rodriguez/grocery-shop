@@ -18,13 +18,13 @@ export class ProductDetailComponent {
   product = signal<IProduct | null>(null)
   productsServices = inject(ProductsService)
   cantidad = signal<number>(1)
- 
 
-  ngOnInit () {
+
+  ngOnInit() {
     this.cargarContenido()
   }
 
-  async cargarContenido (){
+  async cargarContenido() {
     try {
       const id = this.id();
       if (id !== undefined) {
@@ -37,19 +37,22 @@ export class ProductDetailComponent {
     }
   }
 
-  cambiarCantidad(valor: number){
-    this.cantidad.update(valorActual=> Math.max(1, valorActual + valor))
+  cambiarCantidad(valor: number) {
+    this.cantidad.update(valorActual => Math.max(1, valorActual + valor))
   }
 
-  agregarAlCarrito(){
+  agregarAlCarrito() {
     const product = this.product()
 
     if (product) {
-      for (let i=0; i < this.cantidad(); i++) {
+      for (let i = 0; i < this.cantidad(); i++) {
         this.cartServices.addToCart(product)
       }
 
-      toast.success(`Has añadido al carrito ${this.cantidad()} unidad(es) de ${product.name}`)
+      toast.success(`Has añadido ${product.name}`, {
+        description: 'Puedes ver tu selección en el carrito.',
+        duration: 3000,
+      });
 
       this.cantidad.set(1) // limpiamos 
     }
