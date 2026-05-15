@@ -20,6 +20,7 @@
     border: 1px solid var(--border);
     background-color: var(--blanco);
     border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     transition: all 0.3s ease;
 }
 
@@ -30,71 +31,106 @@
 }
 
 .cart-img {
-    width: 70px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.cart-texts {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.cart-texts h6 {
+    color: #333;
+    margin: 0;
+}
+
+.quantity-controls {
+    display: flex !important;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 5px 12px;
+    border-radius: 25px;
 }
 
 .quantity-display {
-    min-width: 40px;
+    min-width: 30px;
     text-align: center;
     color: #333;
     font-weight: 700;
-    font-size: 1rem;
-}
-
-.quantity-controls button {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    transition: all 0.2s;
-}
-
-.checkout-cart {
-    border-radius: 15px;
 }
 
 .btn-mas,
 .btn-menos {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border: none;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     font-weight: 500;
-    font-size: 24px;
-    transition: all 0.3s ease;
+    font-size: 20px;
+    transition: all 0.2s;
     cursor: pointer;
 }
 
 .btn-mas:hover,
 .btn-menos:hover {
-    background-color:var(--color-verde);
+    background-color: var(--color-verde);
     color: var(--blanco);
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(124, 169, 78, 0.2);
 }
 
 
-.total {
+.cart-price-total {
     color: var(--color-verde);
+    font-size:15px;
+    text-align: right;
 
 }
+
+
+@media (max-width: 768px) {
+   .cart-price-total {
+        margin-top: 0;
+        min-width: 100px;
+    }
+    
+}
+
+
+.total h3 {
+    color: var(--color-verde);
+    font-size: 1.8rem;
+}
+
 
 .btn-finalizar,
 .btn-tienda {
     background-color: var(--color-naranja);
-    color: var(--blanco);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
-.btn-finalizar,
+.btn-finalizar:hover,
 .btn-tienda:hover {
-    background-color: var(--color-naranja-hover);
-    color: var(--blanco);
-}
+    background-color: var(--color-naranja-hover) ;
+    color: white ;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 
+}

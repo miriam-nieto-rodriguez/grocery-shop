@@ -17,7 +17,7 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="nombre" class="text-muted small fw-bold mb-2"> Nombre completo</label>
-                            <input type="text" class="form-control custom input" formControlName="nombre" id="nombre">
+                            <input type="text" class="form-control custom-input" formControlName="nombre" id="nombre">
 
                             @if (checkControl('nombre', 'required')){
                             <p class="text-danger mt-1"> Campo obligatorio</p>
@@ -60,8 +60,8 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="direccion" class="form-label text-muted small fw-bold">Dirección</label>
-                            <input type="text" class="form-control custom-input" formControlName="nombre"
-                                formControlName="direccion" id="direccion">
+                            <input type="text" class="form-control custom-input" formControlName="direccion"
+                                id="direccion">
 
                             @if (checkControl('direccion', 'required')){
                             <p class="text-danger mt-1"> Campo obligatorio</p>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <button type="submit" [disabled]="userForm.invalid || cargando()"
-                    class="btn-confirmar btn btn-lg w-100 py-3 shadow-sm">
+                    class="btn-confirmar btn-lg w-100 py-3 shadow-sm">
 
                     @if(cargando()){
                     <span class=" me-2">
@@ -106,20 +106,21 @@
             <!-- COLUMNA DERECHA: RESUMEN DE PEDIDO -->
             <div class="col-lg-4">
                 <div class="card border-0 shadow-sm p-4 sticky-top" style="border-radius: 15px; top: 20px;">
-                    <h5 class="titulos mb-3">Resumen de pedido</h5>
+                    <h5 class="titulos mb-2">Resumen del pedido</h5>
                     <hr class="text-muted">
 
                     <!-- Lista de productos en miniatura -->
-                    <div class="product-list mb-3" style="max-height: 250px; overflow-y: auto;">
+                    <div class="product-list mb-2" style="max-height: 250px; overflow-y: auto;">
                         @for (item of cartServices.carrito(); track item.product.id) {
-                        <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center mb-2">
                             <img [src]="item.product.imageUrl" class="rounded me-3"
                                 style="width: 50px; height: 50px; object-fit: cover;">
                             <div class="flex-grow-1">
                                 <p class="mb-0 small fw-bold text-truncate" style="max-width: 150px;">{{
                                     item.product.name
                                     }}</p>
-                                <small class="text-muted">Cantidad: {{ item.quantity }}</small>
+                                <small class="text-muted">Cantidad: {{ item.quantity }} kg</small>
+
                             </div>
                             <span class="small fw-semibold">{{ (item.product.price * item.quantity).toFixed(2) |
                                 currency: 'EUR'

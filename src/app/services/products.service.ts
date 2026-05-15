@@ -29,7 +29,5 @@ export class ProductsService {
     return lastValueFrom(this.httpClient.put<IProduct>(`${this.apiUrl}/${id}`, product))
   }
 
-
-
 }
 

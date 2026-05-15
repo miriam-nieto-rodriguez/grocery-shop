@@ -52,17 +52,6 @@ export class HomeComponent {
     }
   }
 
-  eventDelete(id: string | number) {
-    this.arrProducts.update(productos =>
-      productos.filter(p => String(p.id) !== String(id))
-    );
-
-    const totalPaginas = Math.ceil(this.arrProducts().length / this.itemsPerPage());
-    if (this.currentPage() > totalPaginas && totalPaginas > 0) {
-      this.currentPage.set(totalPaginas);
-    }
-  }
-
   onSearch(event: Event) {
     const input = event.target as HTMLInputElement;
     this.filterText.set(input.value)
