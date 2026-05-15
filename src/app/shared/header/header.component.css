@@ -1,8 +1,7 @@
 .navbar-brand {
-    padding: 20px 5%;
+    padding: 10px 0;
     color: var(--color-verde);
-    font-family: sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -16,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3 ease;
+    transition: transform 0.3s ease;
 
 }
 
@@ -25,24 +24,36 @@
     height: 22px;
 }
 
-.navbar-brand:hover .logo-circle {
+.navbar-brand:hover .logo-hoja {
     transform: rotate(15deg) scale(1.1);
 }
 
 
 #navbarNav .nav-link {
-    transition: all 0.3s ease;
-    border-radius: 8px;
+transition: all 0.3s ease;
     color: var(--color-verde);
-    opacity: 1;
     font-weight: 500;
+    padding: 6px 16px; 
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 40px; 
+    border-radius: 8px;
 }
 
-.img_verde, .img_blanca {
-    width: 25px;
-    height: 25px;
+.cart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 100%;
+}
+
+.img_verde,
+.img_blanca {
+    width: 24px;
+    height: 24px;
 }
 
 #navbarNav .img_blanca {
@@ -50,16 +61,7 @@
 }
 
 #navbarNav .img_verde {
-    display: inline-block;
-}
-
-
-#navbarNav .nav-link.active {
-background-color:var(--color-verde);
-    color: var(--blanco) !important; 
-    border-radius: 5px;
-    padding: 6px 12px;
-    box-shadow: 0 4px 10px rgba(124, 169, 78, 0.3);
+    display: block;
 }
 
 #navbarNav .nav-link.active .img_verde {
@@ -67,25 +69,32 @@ background-color:var(--color-verde);
 }
 
 #navbarNav .nav-link.active .img_blanca {
-    display: inline-block;
+    display: block;
 }
 
-.active:hover {
-    background-color: var(--color-verde-hover);
-    transform: translateY(-1px)
+#navbarNav .nav-link.active {
+    background-color: var(--color-verde);
+    color: var(--blanco) !important;
+    border-radius: 5px;
+    padding: 6px 12px;
+    box-shadow: 0 4px 10px rgba(124, 169, 78, 0.3);
 }
+
 
 .badge-cart {
     position: absolute;
-    top: 2px;
-    right: -5px;
+    top: -2px;
+    right: -8px;
     font-size: 12px;
-    min-width: 20px;
-    padding: 0px 6px;
-    height: 20px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0px 4px;
     display: flex;
-    background-color: var(--color-naranja);
     align-items: center;
     justify-content: center;
+    background-color: var(--color-naranja);
+    color: var(--blanco);
     border: 2px solid var(--blanco);
+    border-radius: 50%;
+
 }

@@ -1,4 +1,4 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { IProduct, IProductItem } from '../interfaces/iproduct.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
@@ -10,7 +10,15 @@ export class CartService {
   private httpClient = inject(HttpClient)
   private apiUrl = 'http://localhost:3000/products'
 
-  carrito = signal<IProductItem[]>([]);
+  carrito = signal<IProductItem[]>(
+    JSON.parse(localStorage.getItem('cart') || '[]')
+  );
+
+  constructor () {
+    effect(()=>{
+      localStorage.setItem('cart', JSON.stringify(this.carrito()))
+    })
+  }
 
 
   totalCarrito = computed(()=>{
@@ -51,6 +59,6 @@ export class CartService {
 
   limpiarCarrito() {
     this.carrito.set([])
-    localStorage.removeItem('cart')
+   
   }
 }

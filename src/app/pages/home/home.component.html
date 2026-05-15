@@ -1,5 +1,5 @@
 <div class="container mt-5 pb-5">
-    <h1 class="titulo">Productos Frescos del Huerto</h1>
+    <h1 class="titulo fs-2 fs-md-1">Productos Frescos del Huerto</h1>
     <h4 class="subtitulo">Directo a tu mesa, cultivado con amor</h4>
     <div class="search-container mt-4">
         <div class="search-wrapper">
@@ -15,7 +15,7 @@
         <div class="categories-grid">
 
             <div class="category-card" (click)="filtrarPorCategoria('fruta')"
-            [class.selected]="filterText() === 'fruta'">
+                [class.selected]="filterText() === 'fruta'">
                 <span class="category-icon">
                     <img src="apple.svg" alt="fruta" class="image-verde">
                     <img src="apple-white.svg" alt="fruta" class="image-blanca">
@@ -23,7 +23,7 @@
                 <p>Frutas</p>
             </div>
             <div class="category-card" (click)="filtrarPorCategoria('verdura')"
-            [class.selected]="filterText() === 'verdura'">
+                [class.selected]="filterText() === 'verdura'">
                 <span class="category-icon">
                     <img src="carrot.svg" alt="verdura" class="image-verde">
                     <img src="carrot-white.svg" alt="verdura" class="image-blanca">
@@ -31,7 +31,7 @@
                 <p>Verduras</p>
             </div>
             <div class="category-card" (click)="filtrarPorCategoria('hierba')"
-            [class.selected]="filterText() === 'hierba'">
+                [class.selected]="filterText() === 'hierba'">
                 <span class="category-icon">
                     <img src="leaf.svg" alt="hierba" class="image-verde">
                     <img src="leaf-white.svg" alt="hierba" class="image-blanca">
@@ -39,7 +39,7 @@
                 <p>Hierbas</p>
             </div>
             <div class="category-card" (click)="filtrarPorCategoria('especiales')"
-            [class.selected]="filterText() === 'especiales'">
+                [class.selected]="filterText() === 'especiales'">
                 <span class="category-icon">
                     <img src="star.svg" alt="especiales" class="image-verde">
                     <img src="star-white.svg" alt="especiales" class="image-blanca">
@@ -59,12 +59,18 @@
         }
     </section>
 
-    <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-5">
-        <button class="btn-paginacion" (click)="currentPage.set(currentPage() - 1)" [disabled]="currentPage() === 1">←
-            Anterior</button>
-        <span class="paginacion-info shadow-sm">Página {{currentPage()}} de {{totalPages()}}</span>
-        <button class="btn-paginacion" (click)="currentPage.set(currentPage() + 1)"
-            [disabled]="currentPage() >= totalPages()">Siguiente →</button>
+    <div class="d-flex justify-content-center align-items-center gap-2 gap-md-4 mt-4 mb-5">
+        <button class="btn btn-paginacion " (click)="currentPage.set(currentPage() - 1)"
+            [disabled]="currentPage() === 1">←
+            <span class="d-none d-sm d-sm-inline">Anterior</span>
+        </button>
+        <span class="paginacion-info shadow-sm ">
+            <span class="d-none d-sm d-sm-inline">Página {{currentPage()}} de {{totalPages()}}</span>
+        </span>
+        <button class="btn btn-paginacion" (click)="currentPage.set(currentPage() + 1)"
+            [disabled]="currentPage() >= totalPages()">
+            <span class="d-none d-sm d-sm-inline">Siguiente </span>→
+        </button>
     </div>
 
 </div>

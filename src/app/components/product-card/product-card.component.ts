@@ -22,7 +22,7 @@ export class ProductCardComponent {
     if (producto) {
       this.cartService.addToCart(producto);
 
-      toast.success(`Has añadido 1 unidad de ${producto.name}`, {
+      toast.success(`Has añadido ${producto.name}`, {
         description: 'Puedes ver tu selección en el carrito.',
         duration: 3000,
       });
