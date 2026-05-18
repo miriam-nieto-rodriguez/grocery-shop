@@ -89,18 +89,7 @@
 
                     </div>
                 </div>
-                <button type="submit" [disabled]="userForm.invalid || cargando()"
-                    class="btn-confirmar btn btn-lg w-100 py-3 shadow-sm fw-bold">
 
-                    @if(cargando()){
-                    <span class=" me-2">
-                        Procesando...
-                    </span>
-                    } @else {
-                    Confirmar Pedido
-                    }
-
-                </button>
             </div>
 
             <!-- COLUMNA DERECHA: RESUMEN DE PEDIDO -->
@@ -148,6 +137,19 @@
                             'EUR'}}</span>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-8 col-12 mt-4">
+                <button type="submit" [disabled]="userForm.invalid || cargando()"
+                    class="btn-confirmar btn btn-lg w-100 py-3 shadow-sm fw-bold">
+
+                    @if(cargando()){
+                    <span class=" me-2">
+                        Procesando...
+                    </span>
+                    } @else {
+                    Confirmar Pedido
+                    }
+                </button>
             </div>
         </div>
     </form>
