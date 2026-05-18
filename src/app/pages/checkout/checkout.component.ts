@@ -49,6 +49,20 @@ export class CheckoutComponent {
 
 
   async confirmarPedido() {
+
+    Object.keys(this.userForm.controls).forEach(key => {
+      const control = this.userForm.get(key);
+      if (control && typeof control.value === 'string') {
+        control.setValue(control.value.trim());
+      }
+    })
+
+    if (this.userForm.invalid) {
+      toast.error('Por favor, rellena todos los campos correctamente.');
+      return
+    }
+
+
     this.cargando.set(true);
 
     await new Promise(resolve => setTimeout(resolve, 4000))
