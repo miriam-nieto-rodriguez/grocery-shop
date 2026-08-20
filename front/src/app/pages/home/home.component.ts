@@ -24,8 +24,6 @@ export class HomeComponent {
         p.name.toLowerCase().includes(texto) ||
         p.category?.toLowerCase().includes(texto)
       )
-
-    
   });
 
   productsPaginados = computed(() => {
@@ -34,7 +32,7 @@ export class HomeComponent {
     return this.productsFiltrados().slice(inicio, fin);
   })
 
-  totalPages = computed(() => {
+    totalPages = computed(() => {
     return Math.ceil(this.productsFiltrados().length / this.itemsPerPage());
   })
 
