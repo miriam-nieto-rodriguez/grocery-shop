@@ -1,6 +1,6 @@
-const { getAll, getById, create, edit, remove } = require('../../controllers/product.controller');
-
 const router = require ('express'). Router();
+
+const { getAll, getById, create, edit, remove } = require('../../controllers/product.controller');
 
 router.get('/', getAll);
 router.get('/:productId', getById)
