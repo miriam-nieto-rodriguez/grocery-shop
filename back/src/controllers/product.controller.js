@@ -89,10 +89,27 @@ const remove = async (req, res) => {
     }
 }
 
+const assignCategories = async (req, res) => {
+    try{
+        const { productId } = req.params;
+        const product = await products_service.assignCategories(productId, req.body.categoryIds)
+        if(!product) return res.status(404).json({
+            message: 'Producto no encontrado'
+        })
+        res.json(product)
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error al asignar categorías al producto',
+            error: error.message
+        })
+    }
+}
+
 module.exports = {
     getAll,
     getById,
     create,
     edit,
-    remove
+    remove,
+    assignCategories
 }
