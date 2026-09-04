@@ -26,10 +26,21 @@ const removeProduct = async (productId) => {
     return product
 }
 
+const assignCategories = async (productId, categoryIds) => {
+    const product = await Product.findByPk(productId)
+    if (!product) return null
+    await product.setCategories(categoryIds)
+    await product.reload({
+        include: ['Categories']
+    })
+    return product
+}
+
 module.exports = {
     getAllProducts,
     getProductById,
     createProduct,
     editProduct,
-    removeProduct
+    removeProduct,
+    assignCategories
 }
