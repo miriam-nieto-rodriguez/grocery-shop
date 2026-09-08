@@ -24,10 +24,16 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const {
+            email,
+            password
+        } = req.body;
         const result = await authService.loginUser(email, password);
-    
-        const { password: _ , ...userWithoutPassword } = result.user.toJSON()
+
+        const {
+            password: _,
+            ...userWithoutPassword
+        } = result.user.toJSON()
 
         return res.status(200).json({
             message: 'Usuario logueado exitosamente',
@@ -43,7 +49,33 @@ const login = async (req, res) => {
     }
 }
 
+const getProfile = async (req, res) => {
+    try {
+        const userId = req.user.id // viene del token en lugar de la URL
+
+        const profile = await authService.getProfile(userId)
+
+        if (!profile) return res.status(404).json({
+            message: 'Perfil no encontrado'
+        })
+
+        const { password, ...userWithoutPassword } = profile.toJSON() // devuelve directamente el usuario
+
+        return res.status(200).json({
+            message: 'Perfil encontrado',
+            user: userWithoutPassword
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error al buscar el perfil',
+            error: error.message
+        });
+    }
+}
+
 module.exports = {
     register,
-    login
+    login,
+    getProfile
 }
