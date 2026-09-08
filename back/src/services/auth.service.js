@@ -31,7 +31,12 @@ const loginUser = async (email, password) => {
     return { user, token }
 }
 
+const getProfile = async (userId) => {
+    return await User.findByPk(userId)
+}
+
 module.exports = {
     registerUser, 
-    loginUser
+    loginUser,
+    getProfile
 }
