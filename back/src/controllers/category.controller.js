@@ -2,7 +2,10 @@ const categories_service = require('../services/category.service')
 
 const getAll = async (req, res) => {
     try {
-        const categories = await categories_service.getAllCategories()
+        const page = Number(req.query.page) || 1; // req.query siempre llega como string; convertimos a número y usamos 1 por defecto si no viene
+        const limit = Number(req.query.limit) || 10; // igual que page: convertir a número y usar 10 por defecto si no se especifica
+
+        const categories = await categories_service.getAllCategories(page, limit)
         res.json(categories)
 
     } catch (error) {
