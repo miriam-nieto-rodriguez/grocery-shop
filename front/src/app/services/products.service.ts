@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
@@ -8,10 +8,14 @@ import { lastValueFrom } from 'rxjs';
 })
 export class ProductsService {
   private httpClient = inject(HttpClient)
-  private apiUrl= 'http://localhost:3000/products';
+  private apiUrl= 'http://localhost:3000/api/products';
 
-  getAll(): Promise<IProduct[]> {
-    return lastValueFrom(this.httpClient.get<IProduct[]>(`${this.apiUrl}`));
+  getAll(page: number = 1, limit: number = 8){
+    return lastValueFrom
+      (this.httpClient.get<{total: number, products: IProduct[]}>(this.apiUrl, {
+        params: {page, limit}
+      })
+      );
   }
   getById(id: string | undefined): Promise<IProduct>  {
     return lastValueFrom(this.httpClient.get<IProduct>(`${this.apiUrl}/${id}`));

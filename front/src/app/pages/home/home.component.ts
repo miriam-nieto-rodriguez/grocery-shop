@@ -15,25 +15,20 @@ export class HomeComponent {
   currentPage = signal<number>(1)
   itemsPerPage = signal<number>(8)
   filterText = signal<string>('')
+  totalItems = signal<number>(0)
 
   productsFiltrados = computed(() => {
     const texto = this.filterText().toLowerCase();
-    if(!texto) return this.arrProducts()
+    if (!texto) return this.arrProducts()
 
-      return this.arrProducts().filter (p =>
-        p.name.toLowerCase().includes(texto) ||
-        p.category?.toLowerCase().includes(texto)
-      )
+    return this.arrProducts().filter(p =>
+      p.name.toLowerCase().includes(texto) ||
+      p.category?.toLowerCase().includes(texto)
+    )
   });
 
-  productsPaginados = computed(() => {
-    const inicio = (this.currentPage() - 1) * this.itemsPerPage();
-    const fin = inicio + this.itemsPerPage();
-    return this.productsFiltrados().slice(inicio, fin);
-  })
-
-    totalPages = computed(() => {
-    return Math.ceil(this.productsFiltrados().length / this.itemsPerPage());
+  totalPages = computed(() => {
+    return Math.ceil(this.totalItems() / this.itemsPerPage());
   })
 
   ngOnInit() {
@@ -42,9 +37,9 @@ export class HomeComponent {
 
   async cargarContenido() {
     try {
-      const response: IProduct[] = await this.productsServices.getAll();
-
-      this.arrProducts.set(response);
+      const response = await this.productsServices.getAll(this.currentPage(), this.itemsPerPage());
+      this.arrProducts.set(response.products);
+      this.totalItems.set(response.total)
     } catch (error) {
       console.error('Error al cargar los productos:', error);
     }
@@ -56,13 +51,13 @@ export class HomeComponent {
     this.currentPage.set(1)
   }
 
-  filtrarPorCategoria(categoria: string){
-    if (this.filterText() === categoria){
+  filtrarPorCategoria(categoria: string) {
+    if (this.filterText() === categoria) {
       this.filterText.set('');
-    }else {
+    } else {
       this.filterText.set(categoria)
     }
-    
+
     this.currentPage.set(1)
   }
 
