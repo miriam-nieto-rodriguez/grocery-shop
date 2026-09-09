@@ -4,8 +4,9 @@ const getAll = async (req, res) => {
     try {
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 10;
+        const category = Number (req.query.category) || undefined
 
-        const products = await products_service.getAllProducts(page, limit);
+        const products = await products_service.getAllProducts(page, limit, category);
         res.json(products)
 
     } catch (error) {

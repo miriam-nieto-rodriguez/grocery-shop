@@ -1,10 +1,19 @@
+const Category = require('../models/category.model');
 const Product = require('../models/product.model')
 
-const getAllProducts = async (page = 1, limit = 10) => {
+const getAllProducts = async (page = 1, limit = 10, categoryId) => {
     const offset = (page - 1) * limit
+
+    // Si hay categoryId, el include lleva un where filtrando por esa categoría
+    // Si no hay categoryId, el include no lleva where (trae todos los productos)
+    const includeOptions = categoryId
+        ? [{ model: Category, where: { id: categoryId } }]
+        : [{ model: Category }]
+
     const { count, rows } = await Product.findAndCountAll({ // devuelve el total de cuantos hay y los productos de esa pagina
         limit,
-        offset
+        offset,
+        include: includeOptions
     });
     return { total: count, products: rows}
 }
