@@ -1,13 +1,12 @@
 <article class="product-card card h-100 hover-card">
 
     <a [routerLink]="['/product-detail', myProduct()?.id]" class="product-img-link">
-        <img class="card-img-top" [src]="myProduct()?.imageUrl" [alt]="myProduct()?.name">
+        <img class="card-img-top" [src]="myProduct()?.image" [alt]="myProduct()?.name">
     </a>
 
     <div class="card-body">
         <h5 class="card-title fw-semibold text-dark">{{ myProduct()?.name }}</h5>
-        <p class="card-text">{{ myProduct()?.price?.toFixed(2) | currency:
-            'EUR'}}
+        <p class="card-text">{{ myProduct()?.price | currency:'EUR'}}
             <span class="unidad-medida">/kg</span>
         </p>
     </div>

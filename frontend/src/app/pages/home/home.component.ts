@@ -17,15 +17,6 @@ export class HomeComponent {
   filterText = signal<string>('')
   totalItems = signal<number>(0)
 
-  productsFiltrados = computed(() => {
-    const texto = this.filterText().toLowerCase();
-    if (!texto) return this.arrProducts()
-
-    return this.arrProducts().filter(p =>
-      p.name.toLowerCase().includes(texto) ||
-      p.category?.toLowerCase().includes(texto)
-    )
-  });
 
   totalPages = computed(() => {
     return Math.ceil(this.totalItems() / this.itemsPerPage());
@@ -37,9 +28,10 @@ export class HomeComponent {
 
   async cargarContenido() {
     try {
-      const response = await this.productsServices.getAll(this.currentPage(), this.itemsPerPage());
-      this.arrProducts.set(response.products);
-      this.totalItems.set(response.total)
+      // pedimos al backend la página actual, con el límite de items y el texto de búsqueda
+      const response = await this.productsServices.getAll(this.currentPage(), this.itemsPerPage(), this.filterText());
+      this.arrProducts.set(response.products); // ya viene solo la página actual, no hace falta paginar aquí
+      this.totalItems.set(response.total) // total real de la BBDD, usado para calcular totalPages
     } catch (error) {
       console.error('Error al cargar los productos:', error);
     }
@@ -48,7 +40,8 @@ export class HomeComponent {
   onSearch(event: Event) {
     const input = event.target as HTMLInputElement;
     this.filterText.set(input.value)
-    this.currentPage.set(1)
+    this.currentPage.set(1) // volvemos a la página 1, porque una nueva búsqueda puede tener menos resultados que la página actual
+    this.cargarContenido() // la búsqueda la hace el backend, así que hay que volver a pedir los datos manualmente
   }
 
   filtrarPorCategoria(categoria: string) {

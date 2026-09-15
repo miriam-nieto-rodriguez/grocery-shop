@@ -1,10 +1,13 @@
+import { ICategory } from "./icategory.interface";
+
 export interface IProduct {
     id: number;
     name: string;
-    category: string;
+    Categories: ICategory[];
     price: number;
-    imageUrl: string;
+    image: string;
     description: string;
+    stock: number;
 }
 
 export interface IProductItem {

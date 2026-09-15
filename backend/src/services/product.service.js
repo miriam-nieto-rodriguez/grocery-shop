@@ -1,7 +1,8 @@
 const Category = require('../models/category.model');
-const Product = require('../models/product.model')
+const Product = require('../models/product.model');
+const { Op } = require('sequelize');
 
-const getAllProducts = async (page = 1, limit = 10, categoryId) => {
+const getAllProducts = async (page = 1, limit = 10, categoryId, searchText) => {
     const offset = (page - 1) * limit
 
     // Si hay categoryId, el include lleva un where filtrando por esa categoría
@@ -10,9 +11,14 @@ const getAllProducts = async (page = 1, limit = 10, categoryId) => {
         ? [{ model: Category, where: { id: categoryId } }]
         : [{ model: Category }]
 
+    const whereOptions = searchText
+        ? { name: {[ Op.like]: `%${searchText}%`}}
+        : {}
+    
     const { count, rows } = await Product.findAndCountAll({ // devuelve el total de cuantos hay y los productos de esa pagina
         limit,
         offset,
+        where: whereOptions,
         include: includeOptions
     });
     return { total: count, products: rows}

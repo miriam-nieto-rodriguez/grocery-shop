@@ -10,13 +10,14 @@ export class ProductsService {
   private httpClient = inject(HttpClient)
   private apiUrl= 'http://localhost:3000/api/products';
 
-  getAll(page: number = 1, limit: number = 8){
+  getAll(page: number = 1, limit: number = 8, search: string = ""){
     return lastValueFrom
       (this.httpClient.get<{total: number, products: IProduct[]}>(this.apiUrl, {
-        params: {page, limit}
+        params: {page, limit, search}
       })
       );
   }
+
   getById(id: string | undefined): Promise<IProduct>  {
     return lastValueFrom(this.httpClient.get<IProduct>(`${this.apiUrl}/${id}`));
   }
