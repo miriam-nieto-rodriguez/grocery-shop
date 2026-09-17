@@ -8,17 +8,21 @@ import { lastValueFrom } from 'rxjs';
 })
 export class ProductsService {
   private httpClient = inject(HttpClient)
-  private apiUrl= 'http://localhost:3000/api/products';
+  private apiUrl = 'http://localhost:3000/api/products';
 
-  getAll(page: number = 1, limit: number = 8, search: string = ""){
+  getAll(page: number = 1, limit: number = 8, search: string = "", category?: number) {
+    const params: any = { page, limit, search };
+    if (category !== undefined) {
+      params.category = category;
+    }
     return lastValueFrom
-      (this.httpClient.get<{total: number, products: IProduct[]}>(this.apiUrl, {
-        params: {page, limit, search}
+      (this.httpClient.get<{ total: number, products: IProduct[] }>(this.apiUrl, {
+        params
       })
       );
   }
 
-  getById(id: string | undefined): Promise<IProduct>  {
+  getById(id: string | undefined): Promise<IProduct> {
     return lastValueFrom(this.httpClient.get<IProduct>(`${this.apiUrl}/${id}`));
   }
 

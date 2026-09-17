@@ -14,39 +14,20 @@
         <h2 class="mb-4 categorias">Categorías</h2>
         <div class="categories-grid">
 
-            <div class="category-card" (click)="filtrarPorCategoria('fruta')"
-                [class.selected]="filterText() === 'fruta'">
+            @for (category of categories(); track category.id) {
+            <div class="category-card" (click)="filtrarPorCategoria(category.id)"
+                [class.selected]="selectedCategoryId() === category.id">
                 <span class="category-icon">
-                    <img src="apple.svg" alt="fruta" class="image-verde">
-                    <img src="apple-white.svg" alt="fruta" class="image-blanca">
-                </span>
-                <p>Frutas</p>
-            </div>
-            <div class="category-card" (click)="filtrarPorCategoria('verdura')"
-                [class.selected]="filterText() === 'verdura'">
-                <span class="category-icon">
-                    <img src="carrot.svg" alt="verdura" class="image-verde">
-                    <img src="carrot-white.svg" alt="verdura" class="image-blanca">
-                </span>
-                <p>Verduras</p>
-            </div>
-            <div class="category-card" (click)="filtrarPorCategoria('hierba')"
-                [class.selected]="filterText() === 'hierba'">
-                <span class="category-icon">
-                    <img src="leaf.svg" alt="hierba" class="image-verde">
-                    <img src="leaf-white.svg" alt="hierba" class="image-blanca">
-                </span>
-                <p>Hierbas</p>
-            </div>
-            <div class="category-card" (click)="filtrarPorCategoria('especiales')"
-                [class.selected]="filterText() === 'especiales'">
-                <span class="category-icon">
-                    <img src="star.svg" alt="especiales" class="image-verde">
-                    <img src="star-white.svg" alt="especiales" class="image-blanca">
-                </span>
-                <p>Especiales</p>
+                     @if (getCategoryIcon(category.name)) { <!--si el icono existe muestra ambas imagenes -->
+                    <img [src]="getCategoryIcon(category.name)!.normal" [alt]="category.name" class="image-verde">
+                    <img [src]="getCategoryIcon(category.name)!.white" [alt]="category.name" class="image-blanca">
 
+                    }
+                </span>
+                <p>{{category.name}}</p>
             </div>
+
+            }
         </div>
     </section>
 
@@ -60,14 +41,14 @@
     </section>
 
     <div class="d-flex justify-content-center align-items-center gap-2 gap-md-4 mt-4 mb-5">
-        <button class="btn btn-paginacion " (click)="currentPage.set(currentPage() - 1)"
+        <button class="btn btn-paginacion " (click)="cambiarPagina(currentPage() - 1)"
             [disabled]="currentPage() === 1">←
             <span class="d-none d-sm d-sm-inline">Anterior</span>
         </button>
         <span class="paginacion-info shadow-sm ">
             <span class="d-none d-sm d-sm-inline">Página {{currentPage()}} de {{totalPages()}}</span>
         </span>
-        <button class="btn btn-paginacion" (click)="currentPage.set(currentPage() + 1)"
+        <button class="btn btn-paginacion" (click)="cambiarPagina(currentPage() + 1)"
             [disabled]="currentPage() >= totalPages()">
             <span class="d-none d-sm d-sm-inline">Siguiente </span>→
         </button>
