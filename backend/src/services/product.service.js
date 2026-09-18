@@ -19,7 +19,8 @@ const getAllProducts = async (page = 1, limit = 10, categoryId, searchText) => {
         limit,
         offset,
         where: whereOptions,
-        include: includeOptions
+        include: includeOptions,
+        distinct: true
     });
     return { total: count, products: rows}
 }

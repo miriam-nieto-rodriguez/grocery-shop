@@ -5,6 +5,7 @@ import { toast } from 'ngx-sonner';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { CurrencyPipe } from '@angular/common';
 import Swal from 'sweetalert2';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class CheckoutComponent {
   cartServices = inject(CartService);
+  orderServices = inject(OrdersService);
   router = inject(Router)
 
   cargando = signal(false)
@@ -65,23 +67,38 @@ export class CheckoutComponent {
 
     this.cargando.set(true);
 
-    await new Promise(resolve => setTimeout(resolve, 4000))
+    // mapear los items del carrito
+    const itemsToOrder = this.cartServices.carrito().map(item => ({
+      productId: item.product.id,
+      amount: item.quantity
+    }));
 
-    Swal.fire({
-      title: '¡Pedido Realizado con Éxito!',
-      text: 'Gracias por confiar en Huerto Vivo. Tu cosecha llegará pronto a casa.',
-      icon: 'success',
-      iconColor: 'var(--color-verde)',
-      confirmButtonText: 'Volver a la tienda',
-      confirmButtonColor: 'var(--color-naranja)',
-      background: ' var(--blanco)',
-      allowOutsideClick: false
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.cartServices.limpiarCarrito();
-        this.router.navigate(['/home']);
-      }
-    });
+    //await new Promise(resolve => setTimeout(resolve, 4000))
+    try {
+
+      await this.orderServices.createOrder(itemsToOrder);
+
+      Swal.fire({
+        title: '¡Pedido Realizado con Éxito!',
+        text: 'Gracias por confiar en Huerto Vivo. Tu cosecha llegará pronto a casa.',
+        icon: 'success',
+        iconColor: 'var(--color-verde)',
+        confirmButtonText: 'Volver a la tienda',
+        confirmButtonColor: 'var(--color-naranja)',
+        background: ' var(--blanco)',
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.cartServices.limpiarCarrito();
+          this.router.navigate(['/home']);
+        }
+      });
+    } catch (error) {
+      console.error('Error al crear el pedido:', error);
+      toast.error('Ocurrió un error al procesar tu compra. Inténtalo de nuevo.');
+    } finally {
+      this.cargando.set(false)
+    }
   }
 
 

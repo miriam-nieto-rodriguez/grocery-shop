@@ -15,6 +15,9 @@ Order.belongsToMany(Product, {
 Order.hasMany(OrderItem)
 OrderItem.belongsTo(Order)
 
+Product.hasMany(OrderItem)
+OrderItem.belongsTo(Product)
+
 Product.belongsToMany(Category, {
     through: 'productsCategory'
 })

@@ -9,7 +9,14 @@ const getAllOrders = async (userId) => {
         where: {
             UserId: userId
         },
-        include: OrderItem
+        include: [{
+            model: OrderItem,
+            include: [{
+                model: Product,
+                attributes: ['name', 'image', 'price']
+            }]
+        }],
+        order: [['date_order', 'DESC']] // muestra los más recientes primero
     })
 }
 
