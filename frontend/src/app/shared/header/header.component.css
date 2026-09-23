@@ -29,16 +29,62 @@
 }
 
 
-#navbarNav .nav-link {
-transition: all 0.3s ease;
+/* #navbarNav .nav-link {
+    transition: all 0.3s ease;
     color: var(--color-verde);
     font-weight: 500;
-    padding: 6px 16px; 
+    padding: 6px 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px; 
+    height: 40px;
     border-radius: 8px;
+} */
+
+#navbarNav .icon-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    color: var(--color-verde);
+}
+
+#navbarNav .icon-user {
+    color: var(--color-verde) !important;
+    transition: color 0.25s ease;
+    -webkit-text-stroke: 0.6px var(--color-verde);
+}
+
+#navbarNav .icon-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+#navbarNav .icon-btn.active{
+    background-color: var(--color-verde);
+    color: var(--blanco);
+    box-shadow: 0 4px 10px rgba(124, 169, 78, 0.3);
+
+    border-radius: 50%;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+}
+
+#navbarNav .icon-btn:focus,
+#navbarNav .icon-btn:active {
+    border-radius: 50% !important;
+    outline: none;
+    box-shadow: none;
+}
+
+#navbarNav .icon-btn.active .icon-user {
+    color: var(--blanco) !important;
+    -webkit-text-stroke: 0.6px var(--blanco);
 }
 
 .cart-container {
@@ -74,7 +120,7 @@ transition: all 0.3s ease;
 
 #navbarNav .nav-link.active {
     background-color: var(--color-verde);
-    color: var(--blanco) !important;
+    color: var(--blanco);
     border-radius: 5px;
     padding: 6px 12px;
     box-shadow: 0 4px 10px rgba(124, 169, 78, 0.3);
@@ -83,9 +129,9 @@ transition: all 0.3s ease;
 
 .badge-cart {
     position: absolute;
-    top: -2px;
+    top: -6px;
     right: -8px;
-    font-size: 12px;
+    font-size: 11px;
     min-width: 18px;
     height: 18px;
     padding: 0px 4px;

@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { NgxSonnerToaster } from 'ngx-sonner';
 
@@ -11,4 +11,10 @@ import { NgxSonnerToaster } from 'ngx-sonner';
 })
 export class App {
   protected readonly title = signal('grocery-shop');
+  router = inject(Router);
+
+  get mostrarHeader() {
+    const rutasOcultas = ['/login', '/register'];
+    return !rutasOcultas.includes(this.router.url);
+  }
 }

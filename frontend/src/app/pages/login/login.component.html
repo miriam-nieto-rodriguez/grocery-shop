@@ -1,0 +1,56 @@
+<div class="login-page">
+    <div class="login-hero" style="background-image: url('login.avif');">
+        <div class="login-hero-overlay">
+            <a [routerLink]="['/home']" class="d-flex align-items-center brand-login text-decoration-none">
+                <div class="logo-hoja-login">
+                    <img src="hoja.svg" alt="logo" class="logo-icon">
+                </div>
+                <span class="brand-text-login">Huerto vivo</span>
+            </a>
+            <div class="login-hero-text">
+                <p class="del-campo">Del campo a tu mesa</p>
+                <h1>Productos frescos, directo del huerto</h1>
+            </div>
+        </div>
+    </div>
+
+    <section class="login-content">
+        <div class="login-card">
+            <div class="d-flex flex-column gap-1">
+                <h3>Iniciar sesión</h3>
+                <p class="text-muted body-medium">Accede a tu cuenta para seguir comprando</p>
+            </div>
+
+            <div class="section">
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="login-form">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="tu@email.com"
+                        formControlName="email">
+                    @if(loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')) {
+                    <small class="text-danger">El email es obligatorio</small>
+                    }
+
+                    @if(loginForm.get('email')?.touched && loginForm.get('email')?.hasError('pattern')) {
+                    <small class="text-danger">Introduce un email válido</small>
+                    }
+
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" class="form-control" formControlName="password">
+                    @if(loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')) {
+                    <small class="text-danger">La contraseña es obligatoria</small>
+                    }
+
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+                        Iniciar sesión
+                    </button>
+
+                    <p class="text-center text-muted mt-3 body-medium">¿Aún no tienes cuenta?</p>
+                    <a [routerLink]="['/register']" class="btn btn-outline-secondary w-100"> Crear cuenta</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+</div>
