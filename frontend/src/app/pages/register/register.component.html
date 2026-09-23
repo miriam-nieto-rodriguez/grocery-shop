@@ -1,0 +1,138 @@
+<div class="register-page">
+    <div class="register-hero" style="background-image: url('login.avif');">
+        <div class="register-hero-overlay">
+            <a [routerLink]="['/home']" class="d-flex align-items-center brand-register text-decoration-none">
+                <div class="logo-hoja-register">
+                    <img src="hoja.svg" alt="logo" class="logo-icon">
+                </div>
+                <span class="brand-text-register">Huerto vivo</span>
+            </a>
+            <div class="register-hero-text">
+                <p class="del-campo">Del campo a tu mesa</p>
+                <h1>Productos frescos, directo del huerto</h1>
+            </div>
+        </div>
+    </div>
+
+    <section class="register-content">
+        <div class="register-card">
+            <div class="d-flex flex-column gap-1">
+                <h3>Crear cuenta</h3>
+                <p class="text-muted body-medium">Regístrate para empezar a comprar </p>
+            </div>
+
+            <div class="section">
+                <form [formGroup]="registerForm" (ngSubmit)="registerUser()" class="register-form">
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" id="name" class="form-control" formControlName="name">
+                            @if(registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')) {
+                            <small class="text-danger">El nombre es obligatorio</small>
+                            }
+                        </div>
+                        <div class="col-6">
+                            <label for="surname" class="form-label">Apellido</label>
+                            <input type="text" id="surname" class="form-control" formControlName="surname">
+                            @if(registerForm.get('surname')?.touched &&
+                            registerForm.get('surname')?.hasError('required')) {
+                            <small class="text-danger">El apellido es obligatorio</small>
+                            }
+                        </div>
+                    </div>
+
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" id="address" class="form-control" formControlName="address">
+                    @if(registerForm.get('address')?.touched && registerForm.get('address')?.hasError('required')) {
+                    <small class="text-danger">La dirección es obligatoria</small>
+                    }
+
+                    <div class="row">
+                        <div class="col-5">
+                            <label for="city" class="form-label">Ciudad</label>
+                            <input type="text" id="city" class="form-control" formControlName="city">
+                            @if(registerForm.get('city')?.touched && registerForm.get('city')?.hasError('required')) {
+                            <small class="text-danger">La ciudad es obligatoria</small>
+                            }
+                        </div>
+                        <div class="col-4">
+                            <label for="country" class="form-label">País</label>
+                            <input type="text" id="country" class="form-control" formControlName="country">
+                            @if(registerForm.get('country')?.touched &&
+                            registerForm.get('country')?.hasError('required')) {
+                            <small class="text-danger">El país es obligatorio</small>
+                            }
+                        </div>
+                        <div class="col-3">
+                            <label for="code_postal" class="form-label">C.P.</label>
+                            <input type="text" id="code_postal" class="form-control" formControlName="code_postal">
+                            @if(registerForm.get('code_postal')?.touched &&
+                            registerForm.get('code_postal')?.hasError('required')) {
+                            <small class="text-danger">Obligatorio</small>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="phone" class="form-label">Teléfono</label>
+                            <input type="text" id="phone" class="form-control" formControlName="phone">
+                            @if(registerForm.get('phone')?.touched && registerForm.get('phone')?.hasError('required')) {
+                            <small class="text-danger">El teléfono es obligatorio</small>
+                            }
+                            @if(registerForm.get('phone')?.touched && registerForm.get('phone')?.hasError('pattern')) {
+                            <small class="text-danger">9 dígitos</small>
+                            }
+                        </div>
+                        <div class="col-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="tu@email.com"
+                                formControlName="email">
+                            @if(registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')) {
+                            <small class="text-danger">Obligatorio</small>
+                            }
+                            @if(registerForm.get('email')?.touched && registerForm.get('email')?.hasError('pattern')) {
+                            <small class="text-danger">Email inválido</small>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" id="password" class="form-control" formControlName="password">
+                            @if(registerForm.get('password')?.touched &&
+                            registerForm.get('password')?.hasError('required')) {
+                            <small class="text-danger">Obligatoria</small>
+                            }
+                            @if(registerForm.get('password')?.touched &&
+                            registerForm.get('password')?.hasError('minlength')) {
+                            <small class="text-danger">Mínimo 8 caracteres</small>
+                            }
+                        </div>
+                        <div class="col-6">
+                            <label for="confirmPassword" class="form-label">Confirmar</label>
+                            <input type="password" id="confirmPassword" class="form-control"
+                                formControlName="confirmPassword">
+                            @if(registerForm.get('confirmPassword')?.touched &&
+                            registerForm.hasError('passwordMisMatch')) {
+                            <small class="text-danger">No coinciden</small>
+                            }
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-2" [disabled]="registerForm.invalid">
+                        Crear cuenta
+                    </button>
+
+                    <p class="text-center text-muted mt-3 body-medium">¿Ya tienes cuenta?</p>
+                    <a [routerLink]="['/login']" class="btn btn-outline-secondary w-100">Iniciar sesión</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+</div>

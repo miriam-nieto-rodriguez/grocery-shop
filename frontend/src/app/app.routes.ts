@@ -4,10 +4,12 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes = [
     {path:"", redirectTo: "home", pathMatch: "full"},
     {path: "login", component: LoginComponent},
+    {path: "register", component: RegisterComponent},
     {path: "home", component: HomeComponent},
     {path: "product-detail/:id", component: ProductDetailComponent},
     {path: "cart", component: CartComponent},

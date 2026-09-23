@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { IRegisterData, IUser } from '../interfaces/iuser.interface';
+import { CartService } from './cart.service';
 
 const TOKEN_KEY = 'auth_token';
 
@@ -11,6 +12,7 @@ const TOKEN_KEY = 'auth_token';
 export class AuthService {
   private httpClient = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api/auth';
+  private cartService = inject(CartService)
 
   register(data: IRegisterData) {
     return lastValueFrom(this.httpClient.post<{ message: string, user: IUser }>(`${this.apiUrl}/register`, data));
@@ -24,12 +26,17 @@ export class AuthService {
       )
     );
     localStorage.setItem(TOKEN_KEY, response.token);
+
+    this.cartService.limpiarCarrito();
+    
     return response;
+
   }
 
   // Cerrar sesion con JWT solo hay que borrar el token del localStorage
   logout() { 
-    localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(TOKEN_KEY);
+    this.cartService.limpiarCarrito();
   }
 
   // Devuelve el token guardado en localStorage, o null si no existe

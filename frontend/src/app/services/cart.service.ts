@@ -58,7 +58,8 @@ export class CartService {
   }
 
   limpiarCarrito() {
-    this.carrito.set([])
+    this.carrito.set([]);
+    localStorage.removeItem('cart');
    
   }
 }

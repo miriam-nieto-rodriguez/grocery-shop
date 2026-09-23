@@ -73,7 +73,6 @@ export class CheckoutComponent {
       amount: item.quantity
     }));
 
-    //await new Promise(resolve => setTimeout(resolve, 4000))
     try {
 
       await this.orderServices.createOrder(itemsToOrder);
