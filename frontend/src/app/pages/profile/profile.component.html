@@ -1,0 +1,292 @@
+<div class="profile-page py-5">
+    <div class="container">
+
+        <!-- Título superior -->
+        <div class="mb-4">
+            <h2 class="fw-bold text-dark-green mb-1">Mi cuenta</h2>
+            <p class="text-muted small">Gestiona tu perfil y consulta tus pedidos.</p>
+        </div>
+
+        @if (loading()) {
+        <div class="text-center my-5 py-5">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+        </div>
+        } @else {
+        <div class="row g-4">
+
+            <!-- COLUMNA IZQUIERDA: Menú y resumen -->
+            <div class="col-lg-4 col-xl-3">
+
+                <!-- Tarjeta 1: User Avatar -->
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center mb-3 bg-white">
+                    <div class="avatar-circle mx-auto mb-3">
+                        <span class="avatar-text">{{ initials() }}</span>
+                    </div>
+                    <h5 class="fw-bold mb-1 text-dark-green">{{ user()?.name }} {{ user()?.surname }}</h5>
+                    <p class="text-muted small mb-2">{{ user()?.email }}</p>
+                </div>
+
+                <!-- Tarjeta 2: Pedidos -->
+                <div class="card border-0 shadow-sm rounded-4 p-3 mb-3 bg-white text-center">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-6 border-end">
+                            <h4 class="fw-bold mb-0 text-dark-green">{{ orders().length }}</h4>
+                            <small class="text-muted extra-small">Pedidos</small>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="fw-bold mb-0 text-dark-green">{{ pedidosEntregados() }}</h4>
+                            <small class="text-muted extra-small">Entregados</small>
+                        </div>
+                    </div>
+                    <hr class="my-3 opacity-10">
+                    <div>
+                        <h4 class="fw-bold text-orange mb-0">{{ totalGastado() | currency:'EUR' }}</h4>
+                        <small class="text-muted extra-small">Total gastado</small>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Menú lateral de pestañas -->
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white p-2">
+                    <button class="nav-tab-btn" [class.active]="activateTab() === 'datos'"
+                        (click)="activateTab.set('datos')">
+                        <span class="d-flex align-items-center gap-2">
+                            <i class="bi bi-person"></i> Datos personales
+                        </span>
+                        <i class="bi bi-chevron-right small"></i>
+                    </button>
+
+                    <button class="nav-tab-btn mt-1" [class.active]="activateTab() === 'pedidos'"
+                        (click)="activateTab.set('pedidos')">
+                        <span class="d-flex align-items-center gap-2">
+                            <i class="bi bi-box-seam"></i> Historial de pedidos
+                        </span>
+                        <i class="bi bi-chevron-right small"></i>
+                    </button>
+
+                    <button class="nav-tab-btn text-danger mt-3" (click)="onLogout()">
+                        <span class="d-flex align-items-center gap-2">
+                            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- COLUMNA DERECHA: Contenido según la pestaña activa -->
+            <div class="col-lg-8 col-xl-9">
+
+                <!-- PESTAÑA: Datos Personales -->
+                @if (activateTab() === 'datos') {
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold text-dark-green mb-0">Datos personales</h5>
+
+                        @if (!isEditing()) {
+                        <button class="btn btn-link text-success p-0 text-decoration-none small" (click)="toggleEdit()">
+                            <i class="bi bi-pencil me-1"></i>Editar
+                        </button>
+                        } @else {
+                        <button class="btn btn-link text-secondary p-0 text-decoration-none small"
+                            (click)="toggleEdit()">
+                            Cancelar
+                        </button>
+                        }
+                    </div>
+
+                    @if (!isEditing()) {
+                    <!-- VISTA LECTURA -->
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center gap-3 p-2 border-bottom">
+                            <div class="icon-box"><i class="bi bi-person text-muted"></i></div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Nombre completo</small>
+                                <span class="fw-medium text-dark">{{ user()?.name }} {{ user()?.surname }}</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-2 border-bottom">
+                            <div class="icon-box"><i class="bi bi-envelope text-muted"></i></div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Correo electrónico</small>
+                                <span class="fw-medium text-dark">{{ user()?.email }}</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-2 border-bottom">
+                            <div class="icon-box"><i class="bi bi-telephone text-muted"></i></div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Teléfono</small>
+                                <span class="fw-medium text-dark">{{ user()?.phone || 'No indicado' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-2 border-bottom">
+                            <div class="icon-box"><i class="bi bi-geo-alt text-muted"></i></div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Ciudad</small>
+                                <span class="fw-medium text-dark">{{ user()?.city || 'No indicada' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-2">
+                            <div class="icon-box"><i class="bi bi-house text-muted"></i></div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Dirección de entrega</small>
+                                <span class="fw-medium text-dark">{{ user()?.address || 'No indicada' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    } @else {
+                    <!-- FORMULARIO DE EDICIÓN -->
+                    <form (ngSubmit)="onSaveProfile()" class="d-flex flex-column gap-3">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label class="form-label extra-small text-muted mb-1">Nombre</label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]="editForm().name"
+                                    name="name">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label extra-small text-muted mb-1">Apellidos</label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]="editForm().surname"
+                                    name="surname">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label extra-small text-muted mb-1">Teléfono</label>
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="editForm().phone"
+                                name="phone">
+                        </div>
+
+                        <div>
+                            <label class="form-label extra-small text-muted mb-1">Ciudad</label>
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="editForm().city"
+                                name="city">
+                        </div>
+
+                        <div>
+                            <label class="form-label extra-small text-muted mb-1">Dirección de entrega</label>
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="editForm().address"
+                                name="address">
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3"
+                                (click)="toggleEdit()">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success rounded-pill px-4"
+                                [disabled]="saving()">
+                                @if (saving()) {
+                                Guardando...
+                                } @else {
+                                Guardar cambios
+                                }
+                            </button>
+                        </div>
+                    </form>
+                    }
+                </div>
+                }
+
+                <!-- PESTAÑA: Historial de Pedidos -->
+                @if (activateTab() === 'pedidos') {
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-dark-green mb-0">Historial de pedidos</h5>
+                    <span class="text-muted small">{{ orders().length }} pedidos</span>
+                </div>
+
+                @if (orders().length === 0) {
+                <div class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white">
+                    <i class="bi bi-bag-x text-muted fs-1 mb-2"></i>
+                    <p class="text-muted mb-0">Aún no has realizado ningún pedido.</p>
+                </div>
+                } @else {
+                <div class="d-flex flex-column gap-3">
+                    @for (order of orders(); track order.id) {
+                    <div class="card border-0 shadow-sm rounded-4 bg-white overflow-hidden">
+
+                        <!-- Resumen del Pedido -->
+                        <div
+                            class="card-header bg-white border-0 p-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div>
+                                    <small class="text-muted d-block extra-small">Pedido</small>
+                                    <strong class="text-dark">HV-2026-00{{ order.id }}</strong>
+                                </div>
+                                <div>
+                                    <small class="text-muted d-block extra-small">Fecha</small>
+                                    <span class="text-dark small">{{ order.date_order | date:'dd MMM yyyy' }}</span>
+                                </div>
+                                <div>
+                                    <small class="text-muted d-block extra-small">Total</small>
+                                    <strong class="text-dark-green">{{ order.total | currency:'EUR' }}</strong>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge rounded-pill px-3 py-2 fw-normal"
+                                    [class.bg-success-subtle]="order.status.toLowerCase() === 'entregado'"
+                                    [class.text-success]="order.status.toLowerCase() === 'entregado'"
+                                    [class.bg-primary-subtle]="order.status.toLowerCase() !== 'entregado'"
+                                    [class.text-primary]="order.status.toLowerCase() !== 'entregado'">
+                                    @if (order.status.toLowerCase() === 'entregado') {
+                                    <i class="bi bi-check-lg me-1"></i> Entregado
+                                    } @else {
+                                    <i class="bi bi-truck me-1"></i> En camino
+                                    }
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Lista de Productos dentro del Pedido -->
+                        <div class="card-body border-top bg-light-subtle p-3">
+                            <small class="text-muted fw-bold d-block mb-3 extra-small text-uppercase">Productos</small>
+                            <div class="d-flex flex-column gap-2">
+                                @for (item of order.OrderItems; track item.ProductId) {
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-3">
+                                        @if (item.Product; as product) {
+                                        @if (product.image) {
+                                        <img [src]="product.image" [alt]="product.name" class="rounded-3 product-thumb">
+                                        } @else {
+                                        <div class="product-thumb-placeholder rounded-3"></div>
+                                        }
+                                        <div>
+                                            <span class="fw-medium small d-block text-dark">{{ product.name }}</span>
+                                            <small class="text-muted extra-small">{{ item.amount }} unidades</small>
+                                        </div>
+                                        } @else {
+
+                                        <div class="product-thumb-placeholder rounded-3"></div>
+                                        <div>
+                                            <span class="fw-medium small d-block text-dark"> Detalle del producto {{
+                                                item.ProductId
+                                                }}</span>
+                                            <small class="text-muted extra-small">{{ item.amount }} unidades</small>
+                                        </div>
+                                        }
+
+                                    </div>
+                                    <span class="fw-bold small text-dark">{{ (+item.unit_price * item.amount) |
+                                        currency:'EUR' }}</span>
+                                </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    }
+                </div>
+                }
+                }
+
+            </div>
+
+        </div>
+        }
+
+    </div>
+</div>

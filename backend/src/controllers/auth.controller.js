@@ -59,7 +59,10 @@ const getProfile = async (req, res) => {
             message: 'Perfil no encontrado'
         })
 
-        const { password, ...userWithoutPassword } = profile.toJSON() // devuelve directamente el usuario
+        const {
+            password,
+            ...userWithoutPassword
+        } = profile.toJSON() // devuelve directamente el usuario
 
         return res.status(200).json({
             message: 'Perfil encontrado',
@@ -74,8 +77,28 @@ const getProfile = async (req, res) => {
     }
 }
 
+const updateProfile = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const updateUser = await authService.update(userId, req.body);
+
+        res.json({
+            message: 'Perfil actualizado con éxito',
+            user: updateUser
+        });
+
+    } catch (error) {
+        console.error('Error en updateProfile controller:', error);
+        res.status(500).json({
+            message: 'Error al actualizar el perfil'
+        });
+    }
+}
+
+
 module.exports = {
     register,
     login,
-    getProfile
+    getProfile,
+    updateProfile
 }

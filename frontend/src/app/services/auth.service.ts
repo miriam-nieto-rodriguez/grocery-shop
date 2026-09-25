@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { IRegisterData, IUser } from '../interfaces/iuser.interface';
 import { CartService } from './cart.service';
+import { IUserProfile } from '../interfaces/iuser-profile.interface';
 
 const TOKEN_KEY = 'auth_token';
 
@@ -15,7 +16,11 @@ export class AuthService {
   private cartService = inject(CartService)
 
   register(data: IRegisterData) {
-    return lastValueFrom(this.httpClient.post<{ message: string, user: IUser }>(`${this.apiUrl}/register`, data));
+    const response = lastValueFrom(this.httpClient.post<{ message: string, user: IUser }>(`${this.apiUrl}/register`, data));
+
+    this.cartService.limpiarCarrito();
+
+    return response;
   }
 
   async login(email: string, password: string) {
@@ -27,14 +32,12 @@ export class AuthService {
     );
     localStorage.setItem(TOKEN_KEY, response.token);
 
-    this.cartService.limpiarCarrito();
-    
     return response;
 
   }
 
   // Cerrar sesion con JWT solo hay que borrar el token del localStorage
-  logout() { 
+  logout() {
     localStorage.removeItem(TOKEN_KEY);
     this.cartService.limpiarCarrito();
   }
@@ -46,6 +49,16 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.getToken() !== null
+  }
+
+  getProfile(): Promise<{ message: string; user: IUserProfile }> {
+    return lastValueFrom(
+      this.httpClient.get<{ message: string; user: IUserProfile }>(`${this.apiUrl}/me`)
+    );
+  }
+
+  updateProfile(data: Partial<IUserProfile>): Promise<IUserProfile> {
+    return lastValueFrom(this.httpClient.put<IUserProfile>(`${this.apiUrl}/me`, data))
   }
 
 

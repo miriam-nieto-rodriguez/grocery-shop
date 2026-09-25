@@ -1,0 +1,100 @@
+.profile-page {
+  background-color:  var(--interfaz);
+  min-height: 88vh;
+}
+
+.text-dark-green {
+  color: var(--color-verde);
+}
+
+.text-orange {
+  color: var(--color-naranja);
+}
+
+.extra-small {
+  font-size: 0.75rem;
+}
+
+
+.avatar-circle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-verde);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-text {
+  color: var(--blanco);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn-edit-avatar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  background-color: var(--color-naranja);
+  color: var(--blanco);
+  border-radius: 50%;
+  border: 2px solid  var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pestañas del menú lateral */
+.nav-tab-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4a5568;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-btn:hover {
+  background-color: #f1f5f2;
+}
+
+.nav-tab-btn.active {
+  background-color: #eaf2eb;
+  color: #1e3a29;
+  font-weight: 600;
+}
+
+/* Cajas de iconos en Datos Personales */
+.icon-box {
+  width: 36px;
+  height: 36px;
+  background-color: #f4f6f4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Miniaturas de productos en pedidos */
+.product-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+}
+
+.product-thumb-placeholder {
+  width: 44px;
+  height: 44px;
+  background-color: #e2e8f0;
+}
