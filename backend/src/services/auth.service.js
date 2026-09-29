@@ -53,6 +53,7 @@ const update = async (userId, updateData) => {
         surname,
         photo,
         address,
+        province,
         city
     } = updateData;
 
@@ -62,6 +63,7 @@ const update = async (userId, updateData) => {
         surname,
         photo,
         address,
+        province,
         city
     }, {
         where: {

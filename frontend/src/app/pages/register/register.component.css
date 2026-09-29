@@ -74,7 +74,8 @@
 }
 
 .register-content .section {
-    max-width: 380px;
+    width: 100%;
+    max-width: 460px;
 }
 
 .register-card {
@@ -111,20 +112,30 @@
     border-color: var(--color-verde-hover, var(--color-verde));
 }
 
-.form-control {
+.form-label {
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.form-control .fom-select{
     border: 1.5px solid var(--border);
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
     transition: all 0.3 ease;
 }
 
-.form-control:focus {
+.form-control:focus .form-select:focus{
     border-color: var(--color-verde);
     box-shadow: 0 0 0 3px rgba(124, 169, 78, 0.15);
     outline: none;
 }
 
-
+.form-select {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 @media (max-width: 991px) {
     .register-page {

@@ -22,6 +22,12 @@ const User = sequelize.define('User', {
         allowNull: false
     },
 
+    province: {
+       type: DataTypes.STRING,
+       allowNull: false,
+       defaultValue: 'No especificada'
+    },
+
     city: {
         type: DataTypes.STRING,
         allowNull: false

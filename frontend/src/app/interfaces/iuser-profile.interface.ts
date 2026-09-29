@@ -3,6 +3,7 @@ export interface IUserProfile {
     name: string;
     surname: string;
     address?: string;
+    province?: string;
     city?:string;
     phone?: string;
     email?: string;

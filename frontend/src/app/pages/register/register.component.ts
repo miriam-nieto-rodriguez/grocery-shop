@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { toast } from 'ngx-sonner';
 import { IRegisterData } from '../../interfaces/iuser.interface';
+import { PROVINCES_CITIES } from '../../data/provinces.data';
 
 function passwordsMatch(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password')?.value;
@@ -25,6 +26,7 @@ function passwordsMatch(control: AbstractControl): ValidationErrors | null {
 export class RegisterComponent {
   authService = inject(AuthService);
   router = inject(Router);
+  provinces = Object.keys(PROVINCES_CITIES);
 
   registerForm = new FormGroup({
     name: new FormControl('', [
@@ -42,10 +44,10 @@ export class RegisterComponent {
     address: new FormControl('', [
       Validators.required
     ]),
-    city: new FormControl('', [
+    province: new FormControl('', [
       Validators.required
     ]),
-    country: new FormControl('', [
+    city: new FormControl('', [
       Validators.required
     ]),
     code_postal: new FormControl('', [
@@ -67,14 +69,14 @@ export class RegisterComponent {
     { validators: passwordsMatch }
   )
   async registerUser() {
-    const { name, surname, phone, address, city, country, code_postal, email, password } = this.registerForm.value;
+    const { name, surname, phone, address, province, city, code_postal, email, password } = this.registerForm.value;
     if (this.registerForm.invalid) {
       toast.error('Por favor, rellena todos los campos correctamente.');
       return
     }
 
     try {
-      await this.authService.register({ name, surname, phone, address, city, country, code_postal, email, password } as IRegisterData);
+      await this.authService.register({ name, surname, phone, address,province, city, code_postal, email, password, country: 'España' } as IRegisterData);
       toast.success('Cuenta creada correctamente');
       this.router.navigate(['/home'])
     } catch (error) {
@@ -82,6 +84,19 @@ export class RegisterComponent {
       toast.error('No se pudo crear la cuenta');
     }
 
+  }
+
+  getAvailableCities(): string[] {
+    const choosenProvince = this.registerForm.get('province')?.value;
+    // si hay alguna provincia elegida, devuelve el array de ciudades de esa provincia; si no hay ninguna elegida todavía, devuelve un array vacío (no hay ciudades que mostrar)
+    return choosenProvince ? PROVINCES_CITIES[choosenProvince] : []; 
+
+  }
+
+  // Se ejecuta al cambiar el <select> de provincia.
+ // Vacía la ciudad elegida, porque puede pertenecer a otra provincia y ya no sería válida.
+  onProvinceChange() {
+    this.registerForm.get('city')?.setValue('');
   }
 
 }

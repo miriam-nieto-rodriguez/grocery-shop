@@ -19,6 +19,11 @@ const registerSchema = yup.object({
         .trim()
         .max(50)
         .required('La dirección es obligatoria'),
+    province: yup
+        .string()
+        .trim()
+        .max(50)
+        .required('La provincia es obligatoria'),
     city: yup
         .string()
         .trim()
