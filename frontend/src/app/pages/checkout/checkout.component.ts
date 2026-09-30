@@ -6,6 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { CurrencyPipe } from '@angular/common';
 import Swal from 'sweetalert2';
 import { OrdersService } from '../../services/orders.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-checkout',
@@ -16,9 +17,12 @@ import { OrdersService } from '../../services/orders.service';
 export class CheckoutComponent {
   cartServices = inject(CartService);
   orderServices = inject(OrdersService);
-  router = inject(Router)
+  authServices = inject(AuthService);
+  router = inject(Router);
 
-  cargando = signal(false)
+  loading = signal(false);
+  editingStep = signal<number>(0);
+  selectedPaymentMethod = signal<string>('card');
 
   userForm = new FormGroup({
     nombre: new FormControl('', [
@@ -43,15 +47,63 @@ export class CheckoutComponent {
       Validators.required
     ]),
 
-  })
+  });
+
+  async ngOnInit() {
+    await this.loadUserData();
+  }
+
+  async loadUserData() {
+    try {
+      const response = await this.authServices.getProfile();
+      const user = response.user;
+
+      if (user) {
+        // pathValue rellena de forma transparente los inputs del formulario userForm con la info del perfil guardada en la bbdd
+        this.userForm.patchValue({
+          nombre: user.name || '',
+          email: user.email || '',
+          telefono: user.phone || '',
+          direccion: user.address || '',
+          cp: user.code_postal || '',
+          ciudad: user.city || ''
+        });
+
+        //actualiza las validaciones tras autocompletar
+        this.userForm.updateValueAndValidity();
+      }
+
+    } catch (error) {
+      console.error('Error al cargar datos del usuario:', error)
+    }
+  }
 
   checkControl(controlName: string, errorName: string): boolean | undefined {
     return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched;
   }
 
+  toggleEditStep(step: number) {
+    // esta funcion funciona como un interruptor entre el modo de resumen y el modo de edición
+    if (this.editingStep() === step) { 
+      if (step === 1 && this.userForm.invalid) { 
+        this.userForm.markAllAsTouched();
+        toast.error('Por favor rellena todos los datos correctamente.')
+        return;
+      }
+      this.editingStep.set(0);
+    } else {
+      this.editingStep.set(step)
+    }
+  }
 
-  async confirmarPedido() {
+  setPaymentMethod(method: string) {
+    this.selectedPaymentMethod.set(method);
+  }
 
+
+  async confirmOrder() {
+
+    // limpieza de espacios en blanco
     Object.keys(this.userForm.controls).forEach(key => {
       const control = this.userForm.get(key);
       if (control && typeof control.value === 'string') {
@@ -59,13 +111,15 @@ export class CheckoutComponent {
       }
     })
 
+    // validación final antes de enviar
     if (this.userForm.invalid) {
+      this.userForm.markAllAsTouched(); //marca los campos vacios en rojo
       toast.error('Por favor, rellena todos los campos correctamente.');
-      return
+      return;
     }
 
-
-    this.cargando.set(true);
+    //activa estado de carga (el boton pasa a procesando...)
+    this.loading.set(true);
 
     // mapear los items del carrito
     const itemsToOrder = this.cartServices.carrito().map(item => ({
@@ -75,8 +129,10 @@ export class CheckoutComponent {
 
     try {
 
+      // envia la petición al backend
       await this.orderServices.createOrder(itemsToOrder);
 
+      // si esta bien 
       Swal.fire({
         title: '¡Pedido Realizado con Éxito!',
         text: 'Gracias por confiar en Huerto Vivo. Tu cosecha llegará pronto a casa.',
@@ -96,9 +152,14 @@ export class CheckoutComponent {
       console.error('Error al crear el pedido:', error);
       toast.error('Ocurrió un error al procesar tu compra. Inténtalo de nuevo.');
     } finally {
-      this.cargando.set(false)
+
+      // desactiva el modo de carga
+      this.loading.set(false)
     }
+
   }
+
+
 
 
 }

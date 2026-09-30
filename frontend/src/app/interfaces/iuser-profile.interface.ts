@@ -5,6 +5,7 @@ export interface IUserProfile {
     address?: string;
     province?: string;
     city?:string;
+    code_postal?: string;
     phone?: string;
     email?: string;
 }

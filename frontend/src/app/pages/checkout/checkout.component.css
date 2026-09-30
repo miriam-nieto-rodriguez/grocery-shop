@@ -3,6 +3,44 @@
     color: var(--color-verde);
 }
 
+.step-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-verde);
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.btn-editar {
+    color: var(--color-verde);
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-editar:hover {
+    color: var(--color-verde-hover);
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.checkout-step-card {
+    background-color: var(--blanco);
+    transition: all 0.3s ease;
+}
+
+.bg-success-subtle {
+    background-color: #e6f4ea;
+    color: var(--color-verde);
+}
+
 .custom-input {
     border: 1.5px solid var(--border);
     border-radius: 10px;
@@ -38,4 +76,24 @@
 
 .precioTotal {
     color:  var(--color-verde);
+}
+
+@media (min-width: 576px) {
+  .step-badge {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    font-size: 1rem;
+  }
+
+  .btn-editar {
+    font-size: 0.95rem;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .titulos.fs-6 {
+    font-size: 0.9rem;
+  }
 }
