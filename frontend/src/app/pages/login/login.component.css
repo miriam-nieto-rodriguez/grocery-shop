@@ -31,7 +31,7 @@
 }
 
 .brand-text-login {
-    color: var(--blanco); 
+    color: var(--blanco);
     font-size: 24px;
     font-weight: 600;
     white-space: nowrap;
@@ -135,5 +135,12 @@
         grid-row: 2;
         grid-column: 1;
         padding: 48px 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-hero-text h1{
+        margin-top: 30px;
+        font-size: 1rem;
     }
 }
