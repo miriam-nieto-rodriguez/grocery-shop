@@ -2,13 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   private httpClient = inject(HttpClient)
-  private apiUrl = 'http://localhost:3000/api/products';
+  private apiUrl = `${environment.apiUrl}/api/products`;
 
   getAll(page: number = 1, limit: number = 8, search: string = "", category?: number) {
     const params: any = { page, limit, search };

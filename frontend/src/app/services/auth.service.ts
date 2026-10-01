@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { IRegisterData, IUser } from '../interfaces/iuser.interface';
 import { CartService } from './cart.service';
 import { IUserProfile } from '../interfaces/iuser-profile.interface';
+import { environment } from '../../environments/environment';
 
 const TOKEN_KEY = 'auth_token';
 
@@ -12,7 +13,7 @@ const TOKEN_KEY = 'auth_token';
 })
 export class AuthService {
   private httpClient = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = `${environment.apiUrl}/api/auth`;
   private cartService = inject(CartService)
 
   register(data: IRegisterData) {

@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IOrder } from '../interfaces/iorder.interface';
 import { lastValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrdersService {
   private httpClient = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/orders';
+  private apiUrl = `${environment.apiUrl}/api/orders`;
 
   getAll(): Promise<IOrder[]> {
     return lastValueFrom(this.httpClient.get<IOrder[]>(this.apiUrl))
