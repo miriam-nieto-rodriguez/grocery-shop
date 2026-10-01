@@ -2,13 +2,14 @@ import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { IProduct, IProductItem } from '../interfaces/iproduct.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   private httpClient = inject(HttpClient)
-  private apiUrl = 'http://localhost:3000/products'
+  private apiUrl = `${environment.apiUrl}/api/products`;
 
   carrito = signal<IProductItem[]>(
     JSON.parse(localStorage.getItem('cart') || '[]')
