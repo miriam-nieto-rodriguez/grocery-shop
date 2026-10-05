@@ -9,7 +9,7 @@ Aplicación web e-commerce completa para la compra y gestión de productos fresc
 ### **Frontend**
 * **Framework:** Angular (v21)
 * **Estilos:** Bootstrap 5 & CSS3 Responsive
-* **Gestión de Estado y Rutas:**Signals, Angular Router, Reactive Forms
+* **Gestión de Estado y Rutas:** Signals, Angular Router, Reactive Forms
 * **Seguridad:** Auth Guards e Interceptores HTTP para la gestión automática del token
 
 ### **Backend**
